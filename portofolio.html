@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Abdullah Al Ramadhani</title>
+    <link rel="icon" href="foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portofolio.html" class="active">Portofolio</a></li>
+                    <li><a href="report.html">Report</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="portfolio-hero">
+            <div class="container text-center">
+                <p class="intro-subtitle">SELECTED WORK</p>
+                <h1>Portofolio</h1>
+                <p>Kumpulan proyek dan kegiatan yang telah saya kerjakan.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="row g-4 py-5"> 
+                
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/desainweb.png" class="card-img-top" alt="Personal Web">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">Personal Profile Web</h3>
+                            <span class="badge badge-custom badge-blue">Web Design</span>
+                            <p class="card-text">Website profil sederhana menggunakan HTML & CSS murni.</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup1">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/kalkulator.png" class="card-img-top" alt="Aplikasi Kalkulator">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">Aplikasi kalkulator</h3>
+                            <span class="badge badge-custom" style="background-color: #dc3545;">GUI</span> 
+                            <p class="card-text">Konsep desain aplikasi kalkulator sederhana.</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup2">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/ubuntu_pp.jpg" class="card-img-top" alt="Custom Ubuntu">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">Custom Ubuntu ISO</h3>
+                            <span class="badge badge-custom badge-yellow">Linux</span> 
+                            <p class="card-text">Remastering sistem operasi Linux Ubuntu sesuai kebutuhan.</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup3">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/laundryapps.png" class="card-img-top" alt="Aplikasi Laundry">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">Aplikasi Laundry</h3>
+                            <span class="badge badge-custom" style="background-color: #dc3545;">GUI</span>
+                            <p class="card-text">Membuat aplikasi laundry sederhana.</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup4">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/festika2.jpg" class="card-img-top" alt="FESTIKA">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">FESTIKA</h3>
+                            <span class="badge badge-custom" style="background-color: var(--primary-color);">Kegiatan Sosial</span> 
+                            <p class="card-text">Kepanitiaan Festival Informatika (FESTIKA).</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup5">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 portfolio-card-custom shadow-sm border-0">
+                        <div class="portfolio-img-custom">
+                            <img src="foto/eksternal1.jpg" class="card-img-top" alt="HMIF Eksternal">
+                        </div>
+                        <div class="card-body text-center portfolio-content-custom pt-0">
+                            <h3 class="h5">HMIF div Eksternal</h3>
+                            <span class="badge badge-custom" style="background-color: var(--primary-color);">Kegiatan Sosial</span> 
+                            <p class="card-text">Menjadi anggota Himpunan Mahasiswa Informatika divisi Eksternal.</p>
+                            <button type="button" class="btn btn-outline-primary btn-detail-custom" data-bs-toggle="modal" data-bs-target="#popup6">Detail</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="popup1" tabindex="-1" aria-labelledby="popup1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup1Label" style="color: var(--primary-color); font-weight: 700;">Detail: Personal Profile Web</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/hasildw.png" alt="Detail Web">
+                </div>
+                <div class="modal-body">
+                    <p>Proyek ini adalah tugas mata kuliah Desain Web. Tujuannya adalah membuat portofolio online yang responsif menggunakan HTML dan CSS murni yang setelah itu deploy ke wordpress.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Teknologi:</strong> HTML5, CSS3, PHP, FontAwesome</li>
+                        <li><strong>Fitur:</strong> Responsive Grid, Slider CSS, Contact Form</li>
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="popup2" tabindex="-1" aria-labelledby="popup2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup2Label" style="color: var(--primary-color); font-weight: 700;">Detail: Aplikasi kalkulator</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/codingan_kalku.png" alt="Detail Tabungan">
+                </div>
+                <div class="modal-body">
+                    <p>Konsep desain GUI untuk aplikasi kalkulator sederhana menggunakan bahasa Java.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Tools:</strong> Eclipse</li>
+                        <li><strong>Fitur:</strong> Tambah, Kurang, Perkalian, Pembagian.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popup3" tabindex="-1" aria-labelledby="popup3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup3Label" style="color: var(--primary-color); font-weight: 700;">Detail: Custom Ubuntu ISO</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/ubuntu_isi.jpg" alt="Detail Ubuntu">
+                </div>
+                <div class="modal-body">
+                    <p>Proyek remastering Linux Ubuntu dengan anggota kelompok, menghapus bloatware dan menginstall tools coding secara otomatis, Custom Wallpaper, Custom Logo Booting.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Base:</strong> Ubuntu 22.04 LTS</li>
+                        <li><strong>Tools:</strong> Cubic, GParted</li>
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popup4" tabindex="-1" aria-labelledby="popup4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup4Label" style="color: var(--primary-color); font-weight: 700;">Detail: Laundry Apps</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/isilaundry.png" alt="Detail Algo">
+                </div>
+                <div class="modal-body">
+                    <p>Pembuatan sebuah aplikasi laundry yang menggunakan bahasa Java yang dibuat di aplikasi Eclipse.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Bahasa:</strong> Java</li>
+                        <li><strong>Fitur:</strong> Pesanan, Layanan, Pelanggan, Pengguna, Laporan, Profile. </li>
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popup5" tabindex="-1" aria-labelledby="popup5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup5Label" style="color: var(--primary-color); font-weight: 700;">Detail: Acara Festika</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/Festika1.jpg" alt="Detail Bisnis">
+                </div>
+                <div class="modal-body">
+                    <p>Menjadi kepanitiaan di kegiatan Festival Informatika (FESTIKA) yang diselenggarakan pada tahun 2025.</p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popup6" tabindex="-1" aria-labelledby="popup6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h2 class="modal-title h5" id="popup6Label" style="color: var(--primary-color); font-weight: 700;">Detail: Eksternal</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-img-wrapper-custom">
+                    <img src="foto/eksternal2.jpg" alt="Detail IoT">
+                </div>
+                <div class="modal-body">
+                    <p>Menjadi salah satu anggota Eksternal di Himpunan Mahasiswa Informatika periode 2025/2026.</p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
