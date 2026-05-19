@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Abdullah Al Ramadhani</title>
+    <link rel="icon" href="foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="report.html">Report</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <div class="hero-image">
+                    <img src="foto/abg ganteng.jpg" alt="Foto Abdullah Al Ramadhani">
+                </div>
+                <div class="hero-text">
+                    <h1>Abdullah Al Ramadhani</h1>
+                    <p>Selamat datang di website pribadi saya. Di sini saya berbagi tentang kegiatan, keahlian, dan proyek-proyek yang sudah saya buat. Dan saya sekarang adalah mahasiswa jurusan Informatika di Universitas Andalas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-teaser" class="py-5" style="position: relative; overflow: hidden; display: flex; align-items: center; background: url('foto/backgroung.jpeg') center/cover; min-height: 400px;">
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 1;"></div>
+            
+            <div class="container position-relative d-flex justify-content-start" style="z-index: 3;">
+                <div class="about-card p-4 p-md-5" style="background-color: rgba(255, 255, 255, 0.85); border-radius: 20px; box-shadow: var(--shadow-lg); max-width: 500px; text-align: center; /* mx-auto DIHILANGKAN, SEHINGGA OTOMATIS BERADA DI KIRI */">
+                    <h2 class="fs-2 mb-3 fw-bold" style="color: var(--primary-color);">Tak kenal maka tak sayang.</h2>
+                    <p class="mb-4">Sesuai dengan makna kalimat diatas, mari kita berkenalan, tapi sebelum itu saya ingin memperkenalkan diri saya terlebih dahulu. Dengan cara kamu tinggal klik button dibawah ini!  </p>
+                    <a href="about.html" class="btn btn-lg fw-bold" style="background-color: var(--primary-color); color: var(--bg-white); padding: 14px 35px; border-radius: 50px; transition: background-color 0.3s, transform 0.3s;" onmouseover="this.style.backgroundColor='var(--primary-dark)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.backgroundColor='var(--primary-color)'; this.style.transform='translateY(0)'">Tentang Saya</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title">Moments</h2>
+            </div>
+            <div class="slider-container">
+                <div class="slides">
+                    <img src="foto/basket.jpg" alt="Galeri Foto 1">
+                    <img src="foto/anjay.jpg" alt="Galeri Foto 2">
+                    <img src="foto/last smk.jpg" alt="Galeri Foto 3">
+                    <img src="foto/parkerin.jpg" alt="Galeri Foto 4">
+                    <img src="foto/viola tricolor.jpg" alt="Galeri Foto 5">
+                    <img src="foto/momen rpl 1.jpg" alt="Galeri Foto 6">
+                    <img src="foto/dulu.jpg" alt="Galeri Foto 7">
+                    <img src="foto/cybernethic.jpg" alt="Galeri Foto 8">
+                    <img src="foto/momen rpl 2.jpg" alt="Galeri Foto 9">
+                    <img src="foto/sg.jpg" alt="Galeri Foto 10">
+                    <img src="foto/smk.jpg" alt="Galeri Foto 11">
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">❮</button>
+                <button class="next" onclick="moveSlide(1)">❯</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slides img').length;
+
+        function moveSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = totalSlides - 1;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function autoSlide() { moveSlide(1); }
+        setInterval(autoSlide, 3000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

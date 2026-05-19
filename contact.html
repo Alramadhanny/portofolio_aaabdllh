@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Contact - Abdullah Al Ramadhani</title>
+    <link rel="icon" href="foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="report.html">Report</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact-hero">
+            <div class="overlay"></div>
+            <div class="container">
+                <h1>CONTACT</h1>
+            </div>
+        </section>
+
+        <section id="contact-form-section">
+            <div class="container">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <h2 class="mb-4">Kirim Pesan Kepada Saya</h2>
+                    
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama Anda" required>
+                        <span id="error-nama" class="error-message"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Alamat Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email Anda" required>
+                        <span id="error-email" class="error-message"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="kategori" class="form-label">Kategori Pesan</label>
+                        <select id="kategori" name="kategori" class="form-select">
+                            <option value="pertanyaan">Pertanyaan</option>
+                            <option value="saran">Saran</option>
+                            <option value="masalah">Masalah</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <fieldset class="border-0 p-0 m-0">
+                            <legend class="form-label">Apakah Anda ingin menerima balasan?</legend>
+                            
+                            <div class="form-check radio-option-custom">
+                                <input type="radio" id="balasan-ya" name="balasan" value="ya" class="form-check-input secondary-radio" checked>
+                                <label for="balasan-ya" class="form-check-label">Ya, saya ingin menerima balasan</label>
+                            </div>
+                            
+                            <div class="form-check radio-option-custom">
+                                <input type="radio" id="balasan-tidak" name="balasan" value="tidak" class="form-check-input secondary-radio">
+                                <label for="balasan-tidak" class="form-check-label">Tidak, terima kasih</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pesan" class="form-label">Pesan Anda</label>
+                        <textarea id="pesan" name="pesan" rows="6" class="form-control" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        <span id="error-pesan" class="error-message"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-kirim-custom">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+        
+        <section id="social-contact">
+            <div class="container">
+                <h2 class="section-title">Hubungi Saya Secara Langsung</h2>
+                <div class="social-icons">
+                    <a href="mailto:abdullah.ramadhani@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank" title="LINE"><i class="fab fa-line"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/USERNAME_ANDA" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="tel:+6281234567890" title="Telepon: +62 812 3456 7890"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="address">
+            <div class="container">
+                <h2 class="section-title">ALAMAT</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2859263971213!2d100.38998837349844!3d-0.9360142353405394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b907b0ed5935%3A0x7039e6e9ff3e492f!2sNabsyah%20Air%20Galon!5e0!3m2!1sen!2sid!4v1759690142081!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            let isValid = true;
+            const requiredFields = [{ id: 'nama', name: 'Nama Lengkap' }, { id: 'email', name: 'Alamat Email' }, { id: 'pesan', name: 'Pesan' }];
+
+            requiredFields.forEach(field => {
+                const inputElement = document.getElementById(field.id);
+                const errorElement = document.getElementById(`error-${field.id}`);
+                
+                errorElement.textContent = ''; 
+                errorElement.style.display = 'none';
+                inputElement.classList.remove('is-invalid'); 
+
+                if (inputElement.value.trim() === '') {
+                    isValid = false;
+                    errorElement.textContent = `Kolom ${field.name} belum diisi, gan!`;
+                    errorElement.style.display = 'block';
+                    inputElement.classList.add('is-invalid'); 
+                }
+            });
+
+            if (isValid) {
+                alert('Pesan telah terkirim!'); 
+                form.reset();
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
