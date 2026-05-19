@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 PROJECT PORTOFOLIO UJIAN AKHIR DESAIN WEB
 
 Domain: https://aaabdllh.ifportofolio.com/
@@ -16,25 +15,6 @@ C Bootstrap 5
 D JavaScript Murni (untuk Slider Accordion dan validasi formulir)
 
 3 STRUKTUR HALAMAN UTAMA
-=======
-PROJECT PORTOFOLIO UJIAN AKHIR DESAIN WEB
-
-Domain: https://aaabdllh.ifportofolio.com/
-
-1 DESKRIPSI WEBSITE
-Ini adalah website portofolio milik saya Abdullah Al Ramadhani
-Mahasiswa jurusan Informatika di Universitas Andalas.
-Website ini memperkenalkan diri mendokumentasikan riwayat pendidikan pengalaman dan proyek proyek yang telah dikerjakan.
-
-2 TEKNOLOGI YANG DIGUNAKAN
-Website ini dikembangkan menggunakan teknologi utama berikut:
-A HTML5
-B CSS Kustom (dengan skema warna utama Biru Tua dan Emas)
-C Bootstrap 5
-D JavaScript Murni (untuk Slider Accordion dan validasi formulir)
-
-3 STRUKTUR HALAMAN UTAMA
->>>>>>> d393a4e3a190b4826c9d2b962993e6ad65f3ea56
 Website ini terdiri dari 4 halaman dengan fungsi spesifik:
 A Home index.html
     Halaman depan yang berisi perkenalan singkat galeri momen pribadi menggunakan Slider Carousel dan ajakan untuk mengenal lebih jauh.
@@ -52,9 +32,5 @@ A Desain responsif penuh (beradaptasi di berbagai ukuran layar).
 B Navigasi Navbar dan Footer yang konsisten di semua halaman.
 C Pemanfaatan berbagai komponen Bootstrap (Card Modal Accordion Badge Form).
 D Filter laporan praktikum berdasarkan badge mata kuliah.
-<<<<<<< HEAD
 
-=======
-
->>>>>>> d393a4e3a190b4826c9d2b962993e6ad65f3ea56
 Dibuat oleh Abdullah Al Ramadhani

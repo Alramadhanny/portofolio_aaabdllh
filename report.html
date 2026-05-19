@@ -1,1033 +1,495 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2c3e50">
-    <title>Report - Abdullah Al Ramadhani</title>
-    <link rel="icon" href="foto/keren.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="foto/logo.png" alt="Logo Saya"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="portofolio.html">Portofolio</a></li>
-                    <li><a href="report.html" class="active">Report</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="report-hero">
-            <div class="container text-center">
-                <p class="intro-subtitle">PRACTICUM REPORT</p>
-                <h1>Laporan Praktikum</h1>
-                <p>Kumpulan laporan praktikum yang disusun berdasarkan mata kuliah.</p>
-            </div>
-        </section>
-
-        <section id="report-list">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#2c3e50">
+        <title>Report - Abdullah Al Ramadhani</title>
+        <link rel="icon" href="foto/keren.png" type="image/png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
             <div class="container">
-                <div class="report-filter-bar" aria-label="Filter laporan berdasarkan mata kuliah">
-                    <button type="button" class="report-filter-btn active" data-filter="all">Semua</button>
-                    <button type="button" class="report-filter-btn" data-filter="pemrograman-web">Pemrograman Web</button>
-                    <button type="button" class="report-filter-btn" data-filter="desain-web">Desain Web</button>
-                    <button type="button" class="report-filter-btn" data-filter="pbo">PBO</button>
-                    <button type="button" class="report-filter-btn" data-filter="sistem-operasi">Sistem Operasi</button>
-                    <button type="button" class="report-filter-btn" data-filter="basis-data">Basis Data</button>
+                <div class="logo">
+                    <a href="index.html"><img src="foto/logo.png" alt="Logo Saya"></a>
                 </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portofolio.html">Portofolio</a></li>
+                        <li><a href="report.html" class="active">Report</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-                <div class="row g-4 report-grid">
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pemrograman-web">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fab fa-laravel"></i></div>
-                                <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
-                                <h3>Praktikum Laravel: Routing, View, dan Controller</h3>
-                                <p>Membahas persiapan proyek Laravel, pengujian route sederhana, serta challenge controller dan view.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-laravel">Baca Laporan</button>
-                            </div>
-                        </div>
+        <main>
+            <section id="report-hero">
+                <div class="container text-center">
+                    <p class="intro-subtitle">PRACTICUM REPORT</p>
+                    <h1>Laporan Praktikum</h1>
+                    <p>Kumpulan laporan praktikum yang disusun berdasarkan mata kuliah.</p>
+                </div>
+            </section>
+
+            <section id="report-list">
+                <div class="container">
+                    <div class="report-filter-bar" aria-label="Filter laporan berdasarkan mata kuliah">
+                        <button type="button" class="report-filter-btn active" data-filter="all">Semua</button>
+                        <button type="button" class="report-filter-btn" data-filter="pemrograman-web">Pemrograman Web</button>
+                        <button type="button" class="report-filter-btn" data-filter="desain-web">Desain Web</button>
+                        <button type="button" class="report-filter-btn" data-filter="pbo">PBO</button>
+                        <button type="button" class="report-filter-btn" data-filter="sistem-operasi">Sistem Operasi</button>
+                        <button type="button" class="report-filter-btn" data-filter="basis-data">Basis Data</button>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pemrograman-web">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fas fa-layer-group"></i></div>
-                                <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
-                                <h3>Migration, Seeding, Routing, Model, Controller, View</h3>
-                                <p>Membahas alur pengembangan aplikasi web dari pengelolaan database hingga tampilan pengguna.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-migration-seeding">Baca Laporan</button>
+                    <div class="row g-4 report-grid">
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pemrograman-web">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fab fa-laravel"></i></div>
+                                    <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
+                                    <h3>Praktikum Laravel: Routing, View, dan Controller</h3>
+                                    <p>Membahas persiapan proyek Laravel, pengujian route sederhana, serta challenge controller dan view.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-laravel">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-=======
->>>>>>> d393a4e3a190b4826c9d2b962993e6ad65f3ea56
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="desain-web">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fas fa-code"></i></div>
-                                <span class="report-badge badge-desain-web">Desain Web</span>
-                                <h3>Praktikum 1: Struktur HTML</h3>
-                                <p>Membuat struktur halaman web menggunakan elemen HTML dasar dan semantik.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-html">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="desain-web">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fas fa-code"></i></div>
+                                    <span class="report-badge badge-desain-web">Desain Web</span>
+                                    <h3>Praktikum 1: Struktur HTML</h3>
+                                    <p>Membuat struktur halaman web menggunakan elemen HTML dasar dan semantik.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-html">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="desain-web">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fas fa-palette"></i></div>
-                                <span class="report-badge badge-desain-web">Desain Web</span>
-                                <h3>Praktikum 2: CSS Responsive</h3>
-                                <p>Mengatur tampilan halaman web dengan CSS, grid, dan media query.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-css">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="desain-web">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fas fa-palette"></i></div>
+                                    <span class="report-badge badge-desain-web">Desain Web</span>
+                                    <h3>Praktikum 2: CSS Responsive</h3>
+                                    <p>Mengatur tampilan halaman web dengan CSS, grid, dan media query.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-css">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pbo">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fab fa-java"></i></div>
-                                <span class="report-badge badge-pbo">PBO</span>
-                                <h3>Praktikum 3: GUI Kalkulator</h3>
-                                <p>Membangun aplikasi kalkulator sederhana dengan Java dan komponen GUI.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-kalkulator">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pbo">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fab fa-java"></i></div>
+                                    <span class="report-badge badge-pbo">PBO</span>
+                                    <h3>Praktikum 3: GUI Kalkulator</h3>
+                                    <p>Membangun aplikasi kalkulator sederhana dengan Java dan komponen GUI.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-kalkulator">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pbo">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fas fa-shirt"></i></div>
-                                <span class="report-badge badge-pbo">PBO</span>
-                                <h3>Praktikum 4: Aplikasi Laundry</h3>
-                                <p>Membuat aplikasi desktop sederhana untuk mengelola data layanan laundry.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-laundry">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pbo">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fas fa-shirt"></i></div>
+                                    <span class="report-badge badge-pbo">PBO</span>
+                                    <h3>Praktikum 4: Aplikasi Laundry</h3>
+                                    <p>Membuat aplikasi desktop sederhana untuk mengelola data layanan laundry.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-laundry">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="sistem-operasi">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fab fa-ubuntu"></i></div>
-                                <span class="report-badge badge-sistem-operasi">Sistem Operasi</span>
-                                <h3>Praktikum 5: Custom Ubuntu ISO</h3>
-                                <p>Melakukan remastering Ubuntu sesuai kebutuhan praktikum sistem operasi.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-ubuntu">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="sistem-operasi">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fab fa-ubuntu"></i></div>
+                                    <span class="report-badge badge-sistem-operasi">Sistem Operasi</span>
+                                    <h3>Praktikum 5: Custom Ubuntu ISO</h3>
+                                    <p>Melakukan remastering Ubuntu sesuai kebutuhan praktikum sistem operasi.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-ubuntu">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="basis-data">
-                        <div class="card h-100 report-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="report-card-icon"><i class="fas fa-database"></i></div>
-                                <span class="report-badge badge-basis-data">Basis Data</span>
-                                <h3>Praktikum 6: CRUD Data</h3>
-                                <p>Mengelola data menggunakan konsep create, read, update, dan delete.</p>
-                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-crud">Baca Laporan</button>
+                        <div class="col-lg-4 col-md-6 col-12 report-item" data-category="basis-data">
+                            <div class="card h-100 report-card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="report-card-icon"><i class="fas fa-database"></i></div>
+                                    <span class="report-badge badge-basis-data">Basis Data</span>
+                                    <h3>Praktikum 6: CRUD Data</h3>
+                                    <p>Mengelola data menggunakan konsep create, read, update, dan delete.</p>
+                                    <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-crud">Baca Laporan</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="report-detail-section" aria-live="polite">
+            <section id="report-detail-section" aria-live="polite">
+                <div class="container">
+                    <article id="laporan-laravel" class="report-detail" data-category="pemrograman-web">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
+                            <h2>Praktikum Laravel: Routing, View, dan Controller</h2>
+                        </div>
+                        <div class="report-detail-content report-document">
+                            <section class="report-document-block">
+                                <h3>1. Pendahuluan</h3>
+                                <p>Laravel dikenal secara luas sebagai salah satu kerangka kerja atau framework bahasa pemrograman PHP yang paling diminati untuk membangun berbagai aplikasi berbasis web. Dengan menerapkan pola arsitektur Model-View-Controller atau MVC, framework ini memfasilitasi proses penulisan kode yang lebih sistematis, terorganisir, dan mudah untuk dipelihara.</p>
+                                <p>Modul praktikum ini dirancang sebagai pengantar bagi mahasiswa untuk mengenali dasar-dasar Laravel, mencakup identifikasi perangkat lunak pendukung yang diwajibkan, pemahaman susunan direktori dasar dari sebuah proyek, serta pengenalan konsep MVC yang menjadi pilar fundamental dalam perancangan sistem. Rangkaian pembelajaran ini menjadi fondasi krusial sebelum praktikan melangkah pada tahapan pembuatan sistem web yang lebih rumit pada sesi berikutnya.</p>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h3>2. Tujuan</h3>
+                                <ol class="report-objective-list">
+                                    <li>Menguasai konsep-konsep fundamental dari kerangka kerja Laravel sebagai instrumen pengembangan web.</li>
+                                    <li>Mengidentifikasi sekaligus menyiapkan berbagai perangkat lunak pendukung maupun prasyarat awal guna memfasilitasi sebuah proyek Laravel.</li>
+                                    <li>Memahami anatomi susunan berkas standar pada proyek Laravel dan mengimplementasikan konsep arsitektur yang terdiri dari Model, View, beserta Controller.</li>
+                                </ol>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h3>3. Alat atau Tools yang Dipakai</h3>
+                                <p>Berikut ini merupakan daftar tools atau aplikasi yang wajib disiapkan selama berjalannya praktikum.</p>
+                                <ul class="report-tools-list">
+                                    <li>Laragon atau XAMPP</li>
+                                    <li>Visual Studio Code</li>
+                                    <li>Composer</li>
+                                    <li>Git</li>
+                                    <li>Node JS</li>
+                                    <li>NPM</li>
+                                    <li>GitHub</li>
+                                </ul>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h3>4. Langkah Pengerjaan</h3>
+                                <p>Fase ini difokuskan pada tahap persiapan lingkungan kerja sekaligus pengaturan awal proyek Laravel sesuai dengan instruksi yang tertera pada modul. Rangkaian aktivitas yang akan dilakukan meliputi tahap verifikasi kesiapan sistem, instalasi kerangka kerja, peluncuran server lokal, hingga eksplorasi terkait struktur folder dan konsep dasar MVC.</p>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.1 Verifikasi Prasyarat Sistem</h4>
+                                <p>Langkah paling awal sebelum memulai proses pembuatan proyek adalah memvalidasi ketersediaan berbagai aplikasi pendukung. Kelancaran tahapan pembuatan dan pengembangan sangat bergantung pada keberadaan PHP, Composer, Git, Node JS, beserta NPM di dalam sistem komputer.</p>
+                                <p>Cara pengecekan versi spesifik untuk tiap perangkat lunak melalui terminal dapat dilakukan dengan beberapa perintah berikut.</p>
+                                <ul class="report-command-list">
+                                    <li><code>php -v</code></li>
+                                    <li><code>composer --version</code></li>
+                                    <li><code>git --version</code></li>
+                                    <li><code>node -v</code></li>
+                                    <li><code>npm -v</code></li>
+                                </ul>
+                                <div class="report-image-stack">
+                                    <figure class="report-figure">
+                                        <img src="images/1.png" alt="Verifikasi versi PHP dan Composer melalui terminal">
+                                    </figure>
+                                    <figure class="report-figure">
+                                        <img src="images/2.png" alt="Daftar command Composer yang tampil di terminal">
+                                    </figure>
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/3.png" alt="Verifikasi versi Git, Node JS, dan NPM">
+                                    </figure>
+                                </div>
+                                <p>Apabila seluruh perintah tersebut berhasil menampilkan informasi versi masing-masing perangkat lunak, maka proses instalasi dapat dinyatakan sukses dan sistem siap untuk digunakan.</p>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.2 Membuat Proyek Baru Laravel</h4>
+                                <p>Setelah seluruh spesifikasi sistem dipastikan aman, tahapan dilanjutkan dengan pembentukan proyek Laravel. Pada sesi ini, pembuatan kerangka awal aplikasi dilakukan menggunakan Composer sehingga struktur dasar proyek dapat dibuat secara otomatis.</p>
+                                <p>Perintah yang dapat dijalankan pada terminal untuk membangun proyek dengan nama <strong>PraktikumWeb1</strong> adalah sebagai berikut.</p>
+                                <div class="report-code-line"><code>composer create-project laravel/laravel PraktikumWeb1 --prefer-dist</code></div>
+                                <div class="report-image-stack">
+                                    <figure class="report-figure">
+                                        <img src="images/4.png" alt="Proses pembuatan project Laravel melalui Composer">
+                                    </figure>
+                                    <figure class="report-figure">
+                                        <img src="images/5.png" alt="Tahapan instalasi Laravel dan konfigurasi awal project">
+                                    </figure>
+                                </div>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.3 Mengakses Direktori Proyek</h4>
+                                <p>Bila proses instalasi telah selesai tanpa kendala, terminal diarahkan ke dalam folder proyek yang baru dibuat agar proses pengembangan dapat dilanjutkan dari lokasi kerja yang benar.</p>
+                                <div class="report-code-line"><code>cd PraktikumWeb1</code></div>
+                                <div class="report-image-stack">
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/6.png" alt="Perintah masuk ke direktori project PraktikumWeb1">
+                                    </figure>
+                                </div>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.4 Mengaktifkan Server Lokal Laravel</h4>
+                                <p>Untuk mengoperasikan proyek tersebut, jalankan server lokal bawaan Laravel melalui Artisan. Setelah itu, situs web dapat diakses melalui browser menggunakan alamat URL yang ditampilkan oleh sistem. Munculnya halaman beranda bawaan Laravel menjadi tanda bahwa aplikasi telah terkonfigurasi dan berjalan dengan normal.</p>
+                                <div class="report-code-line"><code>php artisan serve</code></div>
+                                <div class="report-image-stack">
+                                    <figure class="report-figure">
+                                        <img src="images/8.png" alt="Terminal saat menjalankan php artisan serve">
+                                    </figure>
+                                    <figure class="report-figure">
+                                        <img src="images/7.png" alt="Halaman awal Laravel yang terbuka di browser lokal">
+                                    </figure>
+                                </div>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.5 Pengujian dengan Halaman Sederhana</h4>
+                                <p>Sebagai langkah konfirmasi lanjutan setelah aplikasi berhasil dijalankan, praktikan diminta untuk menampilkan halaman teks sederhana berupa <strong>Hello World</strong>. Tujuan dari pengujian ini adalah untuk memvalidasi bahwa pengaturan route serta tampilan respons dari aplikasi Laravel dapat berjalan tanpa error.</p>
+                                <div class="report-image-stack">
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/9.png" alt="Kode route hello pada file web php">
+                                    </figure>
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/10.png" alt="Hasil tampilan Hello World pada browser">
+                                    </figure>
+                                </div>
+                            </section>
+
+                            <section class="report-document-block">
+                                <h4>4.6 Challenge</h4>
+                                <ol class="report-challenge-list">
+                                    <li>Buat controller <code>UserController</code>.</li>
+                                    <li>Buat function bernama <code>index</code>.</li>
+                                    <li>Buat view di dalam folder <code>resources/views/user/index.blade.php</code>.</li>
+                                    <li>Di dalam file index, buat tampilan HTML sederhana.</li>
+                                    <li>Buat routing <code>/user</code> yang menampilkan view tersebut.</li>
+                                </ol>
+                                <div class="report-image-grid">
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/11.png" alt="Kode userController yang memanggil view user index">
+                                    </figure>
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/13.png" alt="Isi file index blade untuk halaman user">
+                                    </figure>
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/12.png" alt="Routing user pada file web php">
+                                    </figure>
+                                    <figure class="report-figure compact-figure">
+                                        <img src="images/14.png" alt="Hasil halaman user yang tampil di browser">
+                                    </figure>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+
+                    <article id="laporan-html" class="report-detail" data-category="desain-web">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-desain-web">Desain Web</span>
+                            <h2>Praktikum 1: Struktur HTML</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Memahami struktur dasar dokumen HTML dan penggunaan elemen semantik untuk membangun halaman web yang rapi.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Praktikum ini membahas penggunaan tag seperti header, main, section, footer, heading, paragraf, link, dan gambar.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>Halaman web dapat menampilkan informasi profil dengan susunan konten yang mudah dibaca dan sesuai struktur HTML5.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>HTML menjadi pondasi utama halaman web karena menentukan kerangka dan makna dari setiap bagian konten.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="laporan-css" class="report-detail" data-category="desain-web">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-desain-web">Desain Web</span>
+                            <h2>Praktikum 2: CSS Responsive</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Mempelajari cara mengatur tampilan web agar nyaman dilihat pada perangkat desktop, tablet, dan mobile.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Materi mencakup warna, tipografi, spacing, flexbox, grid, hover effect, dan media query.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>Layout halaman menjadi lebih konsisten, responsif, dan memiliki identitas visual yang sesuai dengan tema portofolio.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>CSS berperan penting dalam membangun pengalaman pengguna melalui tata letak, estetika, dan responsivitas.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="laporan-kalkulator" class="report-detail" data-category="pbo">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-pbo">PBO</span>
+                            <h2>Praktikum 3: GUI Kalkulator</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Menerapkan konsep pemrograman berorientasi objek pada aplikasi kalkulator berbasis GUI.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Praktikum menggunakan class, object, event listener, input angka, dan operasi aritmatika dasar.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>Aplikasi kalkulator dapat menjalankan operasi tambah, kurang, kali, dan bagi melalui tombol antarmuka.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>Konsep event dan object membantu memisahkan tampilan, aksi tombol, dan logika perhitungan.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="laporan-laundry" class="report-detail" data-category="pbo">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-pbo">PBO</span>
+                            <h2>Praktikum 4: Aplikasi Laundry</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Membuat aplikasi desktop untuk membantu pengelolaan layanan laundry secara sederhana.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Praktikum mencakup pembuatan menu pelanggan, layanan, pesanan, pengguna, dan laporan.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>Aplikasi mampu menampilkan form input dan struktur data yang dibutuhkan dalam proses layanan laundry.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>Penerapan GUI dan struktur class dapat membantu membuat aplikasi desktop yang lebih terorganisir.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="laporan-ubuntu" class="report-detail" data-category="sistem-operasi">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-sistem-operasi">Sistem Operasi</span>
+                            <h2>Praktikum 5: Custom Ubuntu ISO</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Memahami proses remastering sistem operasi Ubuntu agar sesuai kebutuhan penggunaan tertentu.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Kegiatan meliputi penyesuaian paket aplikasi, tampilan, wallpaper, dan konfigurasi dasar sistem.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>ISO Ubuntu dapat dikustomisasi dengan aplikasi pendukung dan identitas visual yang sudah ditentukan.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>Remastering membantu memahami struktur sistem operasi serta cara menyiapkan lingkungan kerja yang siap pakai.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="laporan-crud" class="report-detail" data-category="basis-data">
+                        <div class="report-detail-header">
+                            <span class="report-badge badge-basis-data">Basis Data</span>
+                            <h2>Praktikum 6: CRUD Data</h2>
+                        </div>
+                        <div class="report-detail-content">
+                            <div>
+                                <h3>Tujuan</h3>
+                                <p>Mempelajari pengelolaan data menggunakan operasi create, read, update, dan delete.</p>
+                            </div>
+                            <div>
+                                <h3>Pembahasan</h3>
+                                <p>Praktikum membahas struktur tabel, input data, pembacaan data, perubahan data, dan penghapusan data.</p>
+                            </div>
+                            <div>
+                                <h3>Hasil</h3>
+                                <p>Data dapat dikelola melalui proses CRUD sehingga informasi dapat ditambah, ditampilkan, diubah, dan dihapus.</p>
+                            </div>
+                            <div>
+                                <h3>Kesimpulan</h3>
+                                <p>CRUD merupakan konsep dasar yang penting dalam pengembangan aplikasi yang berhubungan dengan basis data.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
             <div class="container">
-                <article id="laporan-laravel" class="report-detail" data-category="pemrograman-web">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
-                        <h2>Praktikum Laravel: Routing, View, dan Controller</h2>
-                    </div>
-                    <div class="report-detail-content report-document">
-                        <section class="report-document-block">
-                            <h3>1. Pendahuluan</h3>
-                            <p>Laravel dikenal secara luas sebagai salah satu kerangka kerja atau framework bahasa pemrograman PHP yang paling diminati untuk membangun berbagai aplikasi berbasis web. Dengan menerapkan pola arsitektur Model-View-Controller atau MVC, framework ini memfasilitasi proses penulisan kode yang lebih sistematis, terorganisir, dan mudah untuk dipelihara.</p>
-                            <p>Modul praktikum ini dirancang sebagai pengantar bagi mahasiswa untuk mengenali dasar-dasar Laravel, mencakup identifikasi perangkat lunak pendukung yang diwajibkan, pemahaman susunan direktori dasar dari sebuah proyek, serta pengenalan konsep MVC yang menjadi pilar fundamental dalam perancangan sistem. Rangkaian pembelajaran ini menjadi fondasi krusial sebelum praktikan melangkah pada tahapan pembuatan sistem web yang lebih rumit pada sesi berikutnya.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>2. Tujuan</h3>
-                            <ol class="report-objective-list">
-                                <li>Menguasai konsep-konsep fundamental dari kerangka kerja Laravel sebagai instrumen pengembangan web.</li>
-                                <li>Mengidentifikasi sekaligus menyiapkan berbagai perangkat lunak pendukung maupun prasyarat awal guna memfasilitasi sebuah proyek Laravel.</li>
-                                <li>Memahami anatomi susunan berkas standar pada proyek Laravel dan mengimplementasikan konsep arsitektur yang terdiri dari Model, View, beserta Controller.</li>
-                            </ol>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>3. Alat atau Tools yang Dipakai</h3>
-                            <p>Berikut ini merupakan daftar tools atau aplikasi yang wajib disiapkan selama berjalannya praktikum.</p>
-                            <ul class="report-tools-list">
-                                <li>Laragon atau XAMPP</li>
-                                <li>Visual Studio Code</li>
-                                <li>Composer</li>
-                                <li>Git</li>
-                                <li>Node JS</li>
-                                <li>NPM</li>
-                                <li>GitHub</li>
-                            </ul>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>4. Langkah Pengerjaan</h3>
-                            <p>Fase ini difokuskan pada tahap persiapan lingkungan kerja sekaligus pengaturan awal proyek Laravel sesuai dengan instruksi yang tertera pada modul. Rangkaian aktivitas yang akan dilakukan meliputi tahap verifikasi kesiapan sistem, instalasi kerangka kerja, peluncuran server lokal, hingga eksplorasi terkait struktur folder dan konsep dasar MVC.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.1 Verifikasi Prasyarat Sistem</h4>
-                            <p>Langkah paling awal sebelum memulai proses pembuatan proyek adalah memvalidasi ketersediaan berbagai aplikasi pendukung. Kelancaran tahapan pembuatan dan pengembangan sangat bergantung pada keberadaan PHP, Composer, Git, Node JS, beserta NPM di dalam sistem komputer.</p>
-                            <p>Cara pengecekan versi spesifik untuk tiap perangkat lunak melalui terminal dapat dilakukan dengan beberapa perintah berikut.</p>
-                            <ul class="report-command-list">
-                                <li><code>php -v</code></li>
-                                <li><code>composer --version</code></li>
-                                <li><code>git --version</code></li>
-                                <li><code>node -v</code></li>
-                                <li><code>npm -v</code></li>
-                            </ul>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/1.png" alt="Verifikasi versi PHP dan Composer melalui terminal">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/2.png" alt="Daftar command Composer yang tampil di terminal">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/3.png" alt="Verifikasi versi Git, Node JS, dan NPM">
-                                </figure>
-                            </div>
-                            <p>Apabila seluruh perintah tersebut berhasil menampilkan informasi versi masing-masing perangkat lunak, maka proses instalasi dapat dinyatakan sukses dan sistem siap untuk digunakan.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.2 Membuat Proyek Baru Laravel</h4>
-                            <p>Setelah seluruh spesifikasi sistem dipastikan aman, tahapan dilanjutkan dengan pembentukan proyek Laravel. Pada sesi ini, pembuatan kerangka awal aplikasi dilakukan menggunakan Composer sehingga struktur dasar proyek dapat dibuat secara otomatis.</p>
-                            <p>Perintah yang dapat dijalankan pada terminal untuk membangun proyek dengan nama <strong>PraktikumWeb1</strong> adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>composer create-project laravel/laravel PraktikumWeb1 --prefer-dist</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/4.png" alt="Proses pembuatan project Laravel melalui Composer">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/5.png" alt="Tahapan instalasi Laravel dan konfigurasi awal project">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.3 Mengakses Direktori Proyek</h4>
-                            <p>Bila proses instalasi telah selesai tanpa kendala, terminal diarahkan ke dalam folder proyek yang baru dibuat agar proses pengembangan dapat dilanjutkan dari lokasi kerja yang benar.</p>
-                            <div class="report-code-line"><code>cd PraktikumWeb1</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/6.png" alt="Perintah masuk ke direktori project PraktikumWeb1">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.4 Mengaktifkan Server Lokal Laravel</h4>
-                            <p>Untuk mengoperasikan proyek tersebut, jalankan server lokal bawaan Laravel melalui Artisan. Setelah itu, situs web dapat diakses melalui browser menggunakan alamat URL yang ditampilkan oleh sistem. Munculnya halaman beranda bawaan Laravel menjadi tanda bahwa aplikasi telah terkonfigurasi dan berjalan dengan normal.</p>
-                            <div class="report-code-line"><code>php artisan serve</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/8.png" alt="Terminal saat menjalankan php artisan serve">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/7.png" alt="Halaman awal Laravel yang terbuka di browser lokal">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.5 Pengujian dengan Halaman Sederhana</h4>
-                            <p>Sebagai langkah konfirmasi lanjutan setelah aplikasi berhasil dijalankan, praktikan diminta untuk menampilkan halaman teks sederhana berupa <strong>Hello World</strong>. Tujuan dari pengujian ini adalah untuk memvalidasi bahwa pengaturan route serta tampilan respons dari aplikasi Laravel dapat berjalan tanpa error.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/9.png" alt="Kode route hello pada file web php">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/10.png" alt="Hasil tampilan Hello World pada browser">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>4.6 Challenge</h4>
-                            <ol class="report-challenge-list">
-                                <li>Buat controller <code>UserController</code>.</li>
-                                <li>Buat function bernama <code>index</code>.</li>
-                                <li>Buat view di dalam folder <code>resources/views/user/index.blade.php</code>.</li>
-                                <li>Di dalam file index, buat tampilan HTML sederhana.</li>
-                                <li>Buat routing <code>/user</code> yang menampilkan view tersebut.</li>
-                            </ol>
-                            <div class="report-image-grid">
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/11.png" alt="Kode userController yang memanggil view user index">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/13.png" alt="Isi file index blade untuk halaman user">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/12.png" alt="Routing user pada file web php">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/14.png" alt="Hasil halaman user yang tampil di browser">
-                                </figure>
-                            </div>
-                        </section>
-                    </div>
-                </article>
-
-<<<<<<< HEAD
-                <article id="laporan-migration-seeding" class="report-detail" data-category="pemrograman-web">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
-                        <h2>Migration, Seeding, Routing, Model, Controller, View</h2>
-                    </div>
-                    <div class="report-detail-content report-document">
-                        <section class="report-document-block">
-                            <h3>A. Pendahuluan</h3>
-                            <p>Laravel merupakan salah satu framework PHP yang banyak dipakai untuk membangun aplikasi web modern. Framework ini menyediakan struktur kerja yang rapi melalui konsep MVC atau Model-View-Controller, sehingga proses pengembangan aplikasi menjadi lebih terarah. Dalam Laravel, pengaturan database, routing, model, controller, dan view dapat saling terhubung untuk membentuk alur aplikasi yang lengkap.</p>
-                            <p>Pada praktikum ini, pembahasan difokuskan pada pembuatan aplikasi sederhana menggunakan Laravel. Materi yang dipelajari meliputi konfigurasi database, pembuatan migration untuk membentuk struktur tabel, penggunaan seeder untuk mengisi data awal, pengaturan routing, pembuatan model, controller, dan view. Seluruh bagian tersebut digunakan untuk memahami proses kerja aplikasi CRUD sederhana dari sisi database sampai tampilan web.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>B. Tujuan</h3>
-                            <ol class="report-objective-list">
-                                <li>Mahasiswa memahami penggunaan migration untuk membuat dan mengatur struktur tabel di database Laravel.</li>
-                                <li>Mahasiswa mengetahui cara memakai seeding untuk mengisi data awal ke dalam database.</li>
-                                <li>Mahasiswa mampu menghubungkan konsep Model, View, Controller, dan Routing dalam aplikasi Laravel.</li>
-                                <li>Mahasiswa mampu menampilkan data dari database ke halaman web melalui kombinasi model, controller, dan blade view.</li>
-                                <li>Mahasiswa memahami dasar pembuatan fitur CRUD sederhana, yaitu tambah, lihat, edit, dan hapus data.</li>
-                            </ol>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>C. Alat atau Tools yang Dipakai</h3>
-                            <p>Tools yang digunakan dalam praktikum ini adalah sebagai berikut.</p>
-                            <ul class="report-tools-list">
-                                <li>Laragon atau XAMPP</li>
-                                <li>Visual Studio Code</li>
-                                <li>Composer</li>
-                                <li>Git</li>
-                                <li>Node JS</li>
-                                <li>NPM</li>
-                                <li>GitHub</li>
-                            </ul>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>D. Langkah Pengerjaan</h3>
-                            <p>Langkah pengerjaan dimulai dari konfigurasi database lokal, pembuatan tabel menggunakan migration, pengisian data awal dengan seeder, pembuatan routing, sampai penyusunan halaman view agar data dapat tampil di browser.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.1 Konfigurasi Database</h4>
-                            <p>Langkah pertama adalah menjalankan Apache dan MySQL melalui XAMPP Control Panel. Apache digunakan sebagai server lokal, sedangkan MySQL digunakan sebagai database untuk project Laravel.</p>
-                            <p>Setelah MySQL berjalan, buka phpMyAdmin melalui alamat <code>http://localhost/phpmyadmin</code>, lalu buat database baru dengan nama <strong>praktikum_laravel</strong>. Database ini akan dipakai untuk menyimpan tabel dan data yang diproses oleh Laravel.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/2.png" alt="Membuat database praktikum_laravel melalui phpMyAdmin">
-                                </figure>
-                            </div>
-                            <p>Berikutnya, buka file <code>.env</code> pada project Laravel dan ubah pengaturan koneksi database agar sesuai dengan database yang sudah dibuat. Umumnya, koneksi memakai <code>DB_CONNECTION=mysql</code>, host <code>127.0.0.1</code>, port <code>3306</code>, nama database <code>praktikum_laravel</code>, username <code>root</code>, dan password dikosongkan apabila mengikuti konfigurasi bawaan XAMPP.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/1.png" alt="Pengaturan koneksi database pada file .env">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.2 Membuat Migration untuk Tabel Products</h4>
-                            <p>Setelah database siap, langkah berikutnya adalah membuat migration. Migration digunakan untuk membangun struktur tabel lewat kode, sehingga tabel tidak perlu dibuat secara manual di phpMyAdmin.</p>
-                            <p>Perintah yang dijalankan pada terminal adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan make:migration create_products_table</code></div>
-                            <p>Setelah perintah dijalankan, Laravel membuat file migration baru di folder <code>database/migrations</code>. File tersebut akan digunakan untuk mendefinisikan kolom-kolom pada tabel <code>products</code>.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/3.png" alt="File migration products berhasil dibuat">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.3 Mengisi Struktur Tabel di Migration</h4>
-                            <p>File migration yang sudah dibuat kemudian diisi dengan struktur tabel. Pada fungsi <code>up()</code>, kolom seperti <code>id</code>, <code>name</code>, <code>price</code>, <code>description</code>, serta <code>timestamps</code> ditambahkan agar tabel products memiliki data yang dibutuhkan.</p>
-                            <p>Bagian <code>down()</code> digunakan untuk menghapus tabel ketika migration di-rollback. Dengan begitu, Laravel dapat mengatur proses pembuatan dan pembatalan struktur database secara rapi.</p>
-                            <div class="report-code-block"><code>Schema::create('products', function (Blueprint $table) {
-    $table-&gt;id();
-    $table-&gt;string('name');
-    $table-&gt;integer('price');
-    $table-&gt;text('description');
-    $table-&gt;timestamps();
-});</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/4.png" alt="Struktur migration tabel products">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.4 Menjalankan Migration</h4>
-                            <p>Setelah struktur tabel selesai ditulis, migration dijalankan agar Laravel membuat tabel products di database. Perintah yang digunakan adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan migrate</code></div>
-                            <p>Jika proses berhasil, tabel <code>products</code> akan muncul di database <code>praktikum_laravel</code>. Tabel bawaan Laravel seperti <code>users</code>, <code>cache</code>, dan <code>jobs</code> juga dapat terlihat apabila migration bawaan ikut dijalankan.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/5.png" alt="Terminal saat menjalankan migration products">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/6.png" alt="Tabel products muncul di database praktikum_laravel">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.5 Membuat Seeder</h4>
-                            <p>Seeder dipakai untuk memasukkan data awal ke database secara otomatis. Dengan seeder, data contoh tidak perlu dimasukkan satu per satu melalui phpMyAdmin.</p>
-                            <p>Perintah untuk membuat seeder products adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan make:seeder ProductSeeder</code></div>
-                            <p>Setelah berhasil dijalankan, Laravel membuat file <code>ProductSeeder.php</code> di folder <code>database/seeders</code>.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/7.png" alt="Perintah membuat ProductSeeder">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.6 Mengisi Data di ProductSeeder</h4>
-                            <p>File <code>ProductSeeder.php</code> kemudian diisi dengan data awal untuk tabel products. Contoh data yang dapat dimasukkan adalah produk Laptop dan Mouse, lengkap dengan harga dan deskripsinya.</p>
-                            <p>Data tersebut dimasukkan melalui query insert agar langsung tersimpan ke tabel products saat seeder dijalankan.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/8.png" alt="Isi kode ProductSeeder untuk menambahkan data awal products">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.7 Memanggil ProductSeeder di DatabaseSeeder</h4>
-                            <p>Agar <code>ProductSeeder</code> dapat dijalankan oleh sistem, file tersebut perlu didaftarkan di dalam <code>DatabaseSeeder.php</code>. Pemanggilan dilakukan pada method <code>run()</code> dengan menambahkan class <code>ProductSeeder</code>.</p>
-                            <div class="report-code-line"><code>$this-&gt;call(ProductSeeder::class);</code></div>
-                            <p>Dengan cara ini, Laravel mengetahui bahwa seeder products harus ikut dieksekusi ketika perintah seeding dijalankan.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/9.png" alt="Pemanggilan ProductSeeder pada DatabaseSeeder">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.8 Menjalankan Seeder</h4>
-                            <p>Setelah seeder didaftarkan, data awal dapat dimasukkan ke database melalui terminal. Perintah yang digunakan adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan db:seed</code></div>
-                            <p>Jika proses berhasil, data produk seperti Laptop dan Mouse akan muncul pada tabel products di phpMyAdmin.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/10.png" alt="Hasil proses seeding tabel products">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.9 Membuat Routing</h4>
-                            <p>Routing digunakan untuk menentukan URL yang dapat diakses oleh user serta respons yang dikembalikan oleh aplikasi. Di Laravel, route ditulis pada file <code>web.php</code> di dalam folder <code>routes</code>.</p>
-                            <p>Melalui file ini, aplikasi dapat diarahkan untuk menampilkan teks sederhana, memanggil controller, mengirim parameter, memakai nama route, sampai membuat route group.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/21.png" alt="Contoh routing dasar pada file web.php">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.10 Routing Dasar</h4>
-                            <p>Routing dasar digunakan untuk memberi respons sederhana ketika user membuka URL tertentu. Misalnya, ketika user mengakses <code>/produk</code>, aplikasi dapat menampilkan tulisan Halaman Produk di browser.</p>
-                            <div class="report-code-block"><code>Route::get('/produk', function () {
-    return 'Halaman Produk';
-});</code></div>
-                            <p>Setelah server Laravel dijalankan dengan <code>php artisan serve</code>, route tersebut dapat diuji melalui browser.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.11 Routing Parameter</h4>
-                            <p>Routing parameter digunakan untuk mengambil nilai tertentu langsung dari URL. Contohnya, ketika user membuka <code>/produk/1</code>, angka <code>1</code> dapat ditangkap sebagai ID produk dan ditampilkan di browser.</p>
-                            <div class="report-code-block"><code>Route::get('/produk/{id}', function ($id) {
-    return 'Produk ID: ' . $id;
-});</code></div>
-                            <p>Konsep ini penting ketika aplikasi perlu menampilkan detail data berdasarkan identitas tertentu, seperti detail produk atau detail mahasiswa.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/22.png" alt="Contoh routing parameter produk berdasarkan id">
-                                </figure>
-                                <figure class="report-figure compact-figure">
-                                    <img src="images/laprak7/11.png" alt="Hasil route parameter produk id di browser">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.12 Named Route</h4>
-                            <p>Named route digunakan untuk memberi nama alias pada sebuah route. Dengan named route, URL tidak perlu ditulis manual berulang kali. Jika suatu saat alamat route berubah, pemanggilan yang memakai nama route tetap lebih mudah disesuaikan.</p>
-                            <div class="report-code-block"><code>Route::get('/dashboard', function () {
-    return 'Halaman Dashboard';
-})-&gt;name('dashboard');</code></div>
-                            <p>Pada file blade, route tersebut dapat dipanggil menggunakan fungsi <code>route('dashboard')</code>.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/23.png" alt="Contoh named route dashboard">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.13 Route Group</h4>
-                            <p>Route group digunakan untuk mengelompokkan beberapa route yang memiliki awalan URL yang sama. Contohnya, route dengan prefix <code>/admin</code> dapat dipakai untuk halaman dashboard dan data user.</p>
-                            <div class="report-code-block"><code>Route::prefix('admin')-&gt;group(function () {
-    Route::get('/dashboard', function () {
-        return 'Admin Dashboard';
-    });
-
-    Route::get('/user', function () {
-        return 'Data User';
-    });
-});</code></div>
-                            <p>Dengan route group, penulisan route menjadi lebih rapi dan tidak perlu mengulang awalan URL yang sama.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/24.png" alt="Contoh route group dengan prefix admin">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.14 Membuat Model Product</h4>
-                            <p>Model berfungsi sebagai jembatan antara aplikasi Laravel dan tabel di database. Untuk membuat model Product, perintah yang dijalankan adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan make:model Product</code></div>
-                            <p>Setelah perintah dieksekusi, Laravel membuat file <code>Product.php</code> di folder <code>app/Models</code>.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/12.png" alt="File model Product berhasil dibuat">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.15 Mengatur Isi Model Product</h4>
-                            <p>Agar model Product dapat menerima input data pada kolom tertentu, properti <code>$fillable</code> perlu ditambahkan. Properti ini berisi daftar kolom yang boleh diisi secara mass assignment.</p>
-                            <div class="report-code-block"><code>protected $fillable = [
-    'name',
-    'price',
-    'description'
-];</code></div>
-                            <p>Dengan pengaturan tersebut, model Product dapat digunakan untuk menyimpan dan mengambil data produk secara lebih aman dan terstruktur.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.16 Penjelasan Fungsi Model</h4>
-                            <p>Model Product bertugas menghubungkan aplikasi Laravel dengan tabel products. Melalui model, proses mengambil, menambah, mengubah, dan menghapus data dapat dilakukan lebih praktis menggunakan fitur Eloquent ORM.</p>
-                            <p>Model membuat controller tidak perlu langsung menulis query database secara manual. Controller cukup memanggil model, sedangkan model menangani hubungan dengan tabel yang sesuai.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/13.png" alt="Pengaturan fillable pada model Product">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.17 Menyiapkan ProductController dan Route Products</h4>
-                            <p>Setelah model siap, controller dibuat untuk mengatur proses pengambilan data products dan mengirimkannya ke view. Route products kemudian dihubungkan ke controller agar halaman dapat menampilkan data dari database.</p>
-                            <div class="report-image-grid">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/14.png" alt="Perintah membuat ProductController">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/15.png" alt="Route products mengarah ke ProductController index">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/16.png" alt="Function index pada ProductController">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/17.png" alt="ProductController mengambil seluruh data products">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/18.png" alt="Route resource products pada file web.php">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.18 Membuat Blade Layout</h4>
-                            <p>Blade layout digunakan sebagai template utama agar struktur halaman seperti <code>html</code>, <code>head</code>, navbar, dan footer tidak perlu ditulis berulang di setiap halaman. Pada praktikum ini, folder <code>layouts</code> dibuat di dalam <code>resources/views</code>, lalu file <code>app.blade.php</code> dibuat sebagai layout utama.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/19.png" alt="Isi file app.blade.php sebagai layout utama">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.19 Mengisi File app.blade.php</h4>
-                            <p>File <code>app.blade.php</code> diisi dengan struktur HTML utama. Bagian <code>@yield('title')</code> digunakan untuk menampilkan judul halaman yang dikirim dari view lain, sedangkan <code>@yield('content')</code> menjadi tempat isi halaman dimasukkan.</p>
-                            <div class="report-code-block"><code>&lt;title&gt;@yield('title')&lt;/title&gt;
-
-&lt;body&gt;
-    &lt;h1&gt;Aplikasi Laravel&lt;/h1&gt;
-    @yield('content')
-&lt;/body&gt;</code></div>
-                            <p>Dengan layout ini, halaman lain cukup mengisi bagian title dan content tanpa membuat kerangka HTML dari awal.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.20 Membuat View Product</h4>
-                            <p>Setelah layout tersedia, halaman untuk menampilkan data produk dibuat dengan nama <code>products.blade.php</code> di folder <code>resources/views</code>. File ini digunakan untuk menampilkan data produk yang dikirim dari controller.</p>
-                            <p>View tersebut memakai <code>@extends('layouts.app')</code> untuk menghubungkan halaman products dengan layout utama.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/20.png" alt="Isi file products.blade.php untuk menampilkan data products">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.21 Menghubungkan View dengan Blade Layout</h4>
-                            <p>File <code>products.blade.php</code> dihubungkan ke layout menggunakan sintaks <code>@extends</code>. Bagian <code>@section('title', 'Products')</code> mengisi judul halaman, sedangkan <code>@section('content')</code> mengisi konten utama.</p>
-                            <p>Data produk yang dikirim dari controller ditampilkan menggunakan perulangan <code>@foreach</code>. Setiap data produk akan ditampilkan dalam bentuk daftar yang berisi nama, harga, dan deskripsi.</p>
-                            <div class="report-code-block"><code>@extends('layouts.app')
-
-@section('title', 'Products')
-
-@section('content')
-    &lt;h2&gt;Daftar Produk&lt;/h2&gt;
-    &lt;ul&gt;
-        @foreach ($products as $product)
-            &lt;li&gt;{{ $product-&gt;name }} - Rp{{ $product-&gt;price }} - {{ $product-&gt;description }}&lt;/li&gt;
-        @endforeach
-    &lt;/ul&gt;
-@endsection</code></div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>1.22 Menjalankan Halaman Products</h4>
-                            <p>Setelah layout dan view selesai dibuat, server Laravel dijalankan kembali menggunakan perintah <code>php artisan serve</code>. Halaman products kemudian dibuka melalui alamat <code>http://127.0.0.1:8000/products</code>.</p>
-                            <p>Jika seluruh konfigurasi benar, halaman akan menampilkan daftar produk dari database dengan tampilan yang berasal dari Blade Layout.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>2. Tugas</h3>
-                            <p>Pada bagian tugas, praktikum dilanjutkan dengan membuat fitur CRUD data mahasiswa. Data mahasiswa disimpan pada database baru, kemudian dihubungkan ke Laravel melalui model, migration, seeder, route resource, controller, dan view.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.1 Membuat Database Mahasiswa</h4>
-                            <p>Langkah pertama adalah membuat database baru melalui phpMyAdmin dengan nama <strong>db_mahasiswa</strong>. Database ini digunakan untuk menyimpan tabel mahasiswa.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/db-mahasiswa.jpeg" alt="Pembuatan database db_mahasiswa">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.2 Menyesuaikan Koneksi Database</h4>
-                            <p>File <code>.env</code> diubah agar Laravel memakai database <code>db_mahasiswa</code>. Bagian yang disesuaikan meliputi nama database, username, dan password.</p>
-                            <div class="report-code-block"><code>DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_mahasiswa
-DB_USERNAME=root
-DB_PASSWORD=</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/env-db-mahasiswa.jpeg" alt="Pengaturan koneksi database db_mahasiswa pada file .env">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.3 Membuat Model Mahasiswa</h4>
-                            <p>Model <code>Mahasiswa</code> dibuat sebagai representasi data mahasiswa di aplikasi Laravel. Pada model ini, kolom <code>nim</code>, <code>nama</code>, dan <code>jurusan</code> dimasukkan ke dalam properti <code>$fillable</code> agar bisa diisi melalui form.</p>
-                            <div class="report-code-block"><code>protected $fillable = [
-    'nim',
-    'nama',
-    'jurusan'
-];</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/model-mahasiswa.jpeg" alt="Model Mahasiswa dengan pengaturan fillable">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.4 Membuat Migration Mahasiswa</h4>
-                            <p>Untuk membuat struktur tabel mahasiswa, migration dibuat melalui terminal. Perintah yang digunakan adalah sebagai berikut.</p>
-                            <div class="report-code-line"><code>php artisan make:migration create_mahasiswa_table</code></div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.5 Mengisi Struktur Tabel Mahasiswa</h4>
-                            <p>File migration mahasiswa diisi dengan kolom <code>nim</code>, <code>nama</code>, dan <code>jurusan</code>. Kolom <code>nim</code> dibuat unik agar tidak ada dua mahasiswa yang memiliki NIM sama.</p>
-                            <div class="report-code-block"><code>Schema::create('mahasiswa', function (Blueprint $table) {
-    $table-&gt;id();
-    $table-&gt;string('nim')-&gt;unique();
-    $table-&gt;string('nama');
-    $table-&gt;string('jurusan');
-    $table-&gt;timestamps();
-});</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/migration-mahasiswa.jpeg" alt="Struktur migration tabel mahasiswa">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.6 Menjalankan Migration Mahasiswa</h4>
-                            <p>Setelah struktur tabel selesai dibuat, migration dijalankan agar tabel mahasiswa benar-benar terbentuk di database.</p>
-                            <div class="report-code-line"><code>php artisan migrate</code></div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.7 Membuat Seeder Mahasiswa</h4>
-                            <p>Seeder mahasiswa dibuat untuk menyediakan data awal yang dapat langsung diuji pada halaman CRUD.</p>
-                            <div class="report-code-line"><code>php artisan make:seeder MahasiswaSeeder</code></div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.8 Mengisi Data Seeder Mahasiswa</h4>
-                            <p>File <code>MahasiswaSeeder.php</code> diisi dengan data contoh, seperti NIM, nama, dan jurusan. Data ini akan masuk ke tabel mahasiswa ketika proses seeding dijalankan.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/seeder-mahasiswa.jpeg" alt="Isi file MahasiswaSeeder">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/database-seeder.jpeg" alt="Pemanggilan MahasiswaSeeder pada DatabaseSeeder">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.9 Menjalankan Seeder Mahasiswa</h4>
-                            <p>Seeder dijalankan bersamaan dengan migration menggunakan perintah berikut.</p>
-                            <div class="report-code-line"><code>php artisan migrate --seed</code></div>
-                            <p>Setelah proses berhasil, data awal mahasiswa dapat dicek melalui phpMyAdmin atau langsung melalui halaman aplikasi.</p>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.10 Membuat Route Resource</h4>
-                            <p>Route resource digunakan agar seluruh jalur CRUD otomatis terhubung ke controller. Pada file <code>web.php</code>, route resource ditambahkan untuk resource mahasiswa.</p>
-                            <div class="report-code-line"><code>Route::resource('mahasiswa', MahasiswaController::class);</code></div>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/route-mahasiswa.jpeg" alt="Route resource mahasiswa pada file web.php">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.11 Membuat MahasiswaController</h4>
-                            <p>File <code>MahasiswaController.php</code> dibuat di folder <code>app/Http/Controllers</code>. Controller ini menjadi tempat logika utama aplikasi, mulai dari menampilkan data, membuka form tambah data, menyimpan data, membuka form edit, memperbarui data, sampai menghapus data.</p>
-                            <p>Method yang digunakan antara lain <code>index()</code>, <code>create()</code>, <code>store()</code>, <code>edit()</code>, <code>update()</code>, dan <code>destroy()</code>.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/controller-mahasiswa.jpeg" alt="Isi MahasiswaController untuk proses CRUD">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.12 Membuat View Index</h4>
-                            <p>File <code>index.blade.php</code> dibuat di folder <code>resources/views/mahasiswa</code>. Halaman ini bertugas menampilkan daftar mahasiswa dalam bentuk tabel, lengkap dengan tombol tambah data, edit, dan hapus.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/index-blade.jpeg" alt="Kode view index daftar mahasiswa">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/daftar-mahasiswa-awal.jpeg" alt="Tampilan awal daftar mahasiswa">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.13 Membuat View Create</h4>
-                            <p>File <code>create.blade.php</code> digunakan untuk menampilkan form tambah mahasiswa baru. Form ini berisi input NIM, nama, dan jurusan, lalu data dikirim ke route store.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/create-blade.jpeg" alt="Kode view create mahasiswa">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/form-create-mahasiswa.jpeg" alt="Tampilan form tambah mahasiswa baru">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/daftar-mahasiswa-tambah.jpeg" alt="Daftar mahasiswa setelah data baru ditambahkan">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h4>2.14 Membuat View Edit</h4>
-                            <p>File <code>edit.blade.php</code> digunakan untuk menampilkan form edit data mahasiswa. Data lama ditampilkan kembali di dalam form agar user dapat memperbarui informasi yang diperlukan.</p>
-                            <p>Output akhir dari tugas ini adalah halaman daftar mahasiswa yang dapat menampilkan data, menambah data baru, mengedit data, dan menghapus data melalui browser.</p>
-                            <div class="report-image-stack">
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/edit-blade.jpeg" alt="Kode view edit mahasiswa">
-                                </figure>
-                                <figure class="report-figure">
-                                    <img src="images/laprak7/tugas/form-edit-mahasiswa.jpeg" alt="Tampilan form edit mahasiswa">
-                                </figure>
-                            </div>
-                        </section>
-
-                        <section class="report-document-block">
-                            <h3>E. Kesimpulan</h3>
-                            <p>Melalui praktikum ini, mahasiswa dapat memahami alur pembuatan aplikasi web modern menggunakan Laravel. Migration membantu mengatur struktur database melalui kode, seeder mempermudah pengisian data awal, model menjadi penghubung antara aplikasi dan tabel database, controller mengatur logika pemrosesan data, sedangkan view menampilkan hasilnya kepada pengguna.</p>
-                            <p>Praktikum ini juga menunjukkan bahwa routing berperan penting dalam menghubungkan URL dengan proses aplikasi. Dengan memakai route resource, proses CRUD dapat disusun lebih rapi karena setiap aksi sudah memiliki jalurnya masing-masing. Secara keseluruhan, kombinasi migration, seeding, routing, model, controller, dan view menjadi dasar penting untuk membangun aplikasi CRUD sederhana yang terstruktur dan mudah dikembangkan.</p>
-                        </section>
-                    </div>
-                </article>
-
-=======
->>>>>>> d393a4e3a190b4826c9d2b962993e6ad65f3ea56
-                <article id="laporan-html" class="report-detail" data-category="desain-web">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-desain-web">Desain Web</span>
-                        <h2>Praktikum 1: Struktur HTML</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Memahami struktur dasar dokumen HTML dan penggunaan elemen semantik untuk membangun halaman web yang rapi.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Praktikum ini membahas penggunaan tag seperti header, main, section, footer, heading, paragraf, link, dan gambar.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>Halaman web dapat menampilkan informasi profil dengan susunan konten yang mudah dibaca dan sesuai struktur HTML5.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>HTML menjadi pondasi utama halaman web karena menentukan kerangka dan makna dari setiap bagian konten.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article id="laporan-css" class="report-detail" data-category="desain-web">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-desain-web">Desain Web</span>
-                        <h2>Praktikum 2: CSS Responsive</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Mempelajari cara mengatur tampilan web agar nyaman dilihat pada perangkat desktop, tablet, dan mobile.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Materi mencakup warna, tipografi, spacing, flexbox, grid, hover effect, dan media query.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>Layout halaman menjadi lebih konsisten, responsif, dan memiliki identitas visual yang sesuai dengan tema portofolio.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>CSS berperan penting dalam membangun pengalaman pengguna melalui tata letak, estetika, dan responsivitas.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article id="laporan-kalkulator" class="report-detail" data-category="pbo">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-pbo">PBO</span>
-                        <h2>Praktikum 3: GUI Kalkulator</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Menerapkan konsep pemrograman berorientasi objek pada aplikasi kalkulator berbasis GUI.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Praktikum menggunakan class, object, event listener, input angka, dan operasi aritmatika dasar.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>Aplikasi kalkulator dapat menjalankan operasi tambah, kurang, kali, dan bagi melalui tombol antarmuka.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>Konsep event dan object membantu memisahkan tampilan, aksi tombol, dan logika perhitungan.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article id="laporan-laundry" class="report-detail" data-category="pbo">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-pbo">PBO</span>
-                        <h2>Praktikum 4: Aplikasi Laundry</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Membuat aplikasi desktop untuk membantu pengelolaan layanan laundry secara sederhana.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Praktikum mencakup pembuatan menu pelanggan, layanan, pesanan, pengguna, dan laporan.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>Aplikasi mampu menampilkan form input dan struktur data yang dibutuhkan dalam proses layanan laundry.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>Penerapan GUI dan struktur class dapat membantu membuat aplikasi desktop yang lebih terorganisir.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article id="laporan-ubuntu" class="report-detail" data-category="sistem-operasi">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-sistem-operasi">Sistem Operasi</span>
-                        <h2>Praktikum 5: Custom Ubuntu ISO</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Memahami proses remastering sistem operasi Ubuntu agar sesuai kebutuhan penggunaan tertentu.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Kegiatan meliputi penyesuaian paket aplikasi, tampilan, wallpaper, dan konfigurasi dasar sistem.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>ISO Ubuntu dapat dikustomisasi dengan aplikasi pendukung dan identitas visual yang sudah ditentukan.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>Remastering membantu memahami struktur sistem operasi serta cara menyiapkan lingkungan kerja yang siap pakai.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article id="laporan-crud" class="report-detail" data-category="basis-data">
-                    <div class="report-detail-header">
-                        <span class="report-badge badge-basis-data">Basis Data</span>
-                        <h2>Praktikum 6: CRUD Data</h2>
-                    </div>
-                    <div class="report-detail-content">
-                        <div>
-                            <h3>Tujuan</h3>
-                            <p>Mempelajari pengelolaan data menggunakan operasi create, read, update, dan delete.</p>
-                        </div>
-                        <div>
-                            <h3>Pembahasan</h3>
-                            <p>Praktikum membahas struktur tabel, input data, pembacaan data, perubahan data, dan penghapusan data.</p>
-                        </div>
-                        <div>
-                            <h3>Hasil</h3>
-                            <p>Data dapat dikelola melalui proses CRUD sehingga informasi dapat ditambah, ditampilkan, diubah, dan dihapus.</p>
-                        </div>
-                        <div>
-                            <h3>Kesimpulan</h3>
-                            <p>CRUD merupakan konsep dasar yang penting dalam pengembangan aplikasi yang berhubungan dengan basis data.</p>
-                        </div>
-                    </div>
-                </article>
+                <div class="footer-left">
+                    <span class="copyright-year">&copy; 2025</span>
+                </div>
+                <div class="footer-center">
+                    <p>Abdullah Al Ramadhani</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer>
-        <div class="container">
-            <div class="footer-left">
-                <span class="copyright-year">© 2025</span>
-            </div>
-            <div class="footer-center">
-                <p>Abdullah Al Ramadhani</p>
-            </div>
-            <div class="footer-right">
-                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
-                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const filterButtons = document.querySelectorAll('.report-filter-btn');
-        const reportItems = document.querySelectorAll('.report-item');
-        const detailButtons = document.querySelectorAll('.report-detail-trigger');
-        const detailSection = document.getElementById('report-detail-section');
-        const reportDetails = document.querySelectorAll('.report-detail');
-
-        function closeDetailWhenFiltered(category) {
-            const activeDetail = document.querySelector('.report-detail.active');
-            if (!activeDetail) return;
-
-            if (category !== 'all' && activeDetail.dataset.category !== category) {
-                activeDetail.classList.remove('active');
-                detailSection.classList.remove('active');
+        <script>
+            const filterButtons = document.querySelectorAll('.report-filter-btn');
+            const reportItems = document.querySelectorAll('.report-item');
+            const detailButtons = document.querySelectorAll('.report-detail-trigger');
+            const detailSection = document.getElementById('report-detail-section');
+            const reportDetails = document.querySelectorAll('.report-detail');
+            function closeDetailWhenFiltered(category) {
+                const activeDetail = document.querySelector('.report-detail.active');
+                if (!activeDetail) return;
+                if (category !== 'all' && activeDetail.dataset.category !== category) {
+                    activeDetail.classList.remove('active');
+                    detailSection.classList.remove('active');
+                }
             }
-        }
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const category = this.dataset.filter;
-
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-
-                reportItems.forEach(item => {
-                    const isVisible = category === 'all' || item.dataset.category === category;
-                    item.classList.toggle('d-none', !isVisible);
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.filter;
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    reportItems.forEach(item => {
+                        const isVisible = category === 'all' || item.dataset.category === category;
+                        item.classList.toggle('d-none', !isVisible);
+                    });
+                    closeDetailWhenFiltered(category);
                 });
-
-                closeDetailWhenFiltered(category);
             });
-        });
-
-        detailButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.dataset.target;
-
-                reportDetails.forEach(detail => {
-                    detail.classList.toggle('active', detail.id === targetId);
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    reportDetails.forEach(detail => {
+                        detail.classList.toggle('active', detail.id === targetId);
+                    });
+                    detailSection.classList.add('active');
+                    detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
-
-                detailSection.classList.add('active');
-                detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
