@@ -559,6 +559,36 @@ nav a.active {
     margin-top: 8px;
 }
 
+.report-source-actions {
+    margin-top: 18px;
+}
+
+.report-github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: var(--radius-std);
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.report-github-button:hover {
+    background-color: var(--primary-dark);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.report-github-button i {
+    font-size: 18px;
+}
+
 .report-command-list,
 .report-challenge-list,
 .report-objective-list,
@@ -865,5 +895,8 @@ footer .container {
     }
     .report-image-grid {
         grid-template-columns: 1fr;
+    }
+    .report-github-button {
+        width: 100%;
     }
 }
