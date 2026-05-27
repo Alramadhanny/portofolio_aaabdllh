@@ -73,6 +73,18 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="pemrograman-web">
+                        <div class="card h-100 report-card">
+                            <div class="card-body d-flex flex-column">
+                                <div class="report-card-icon"><i class="fas fa-users"></i></div>
+                                <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
+                                <h3>Student, Major, dan Subject</h3>
+                                <p>Membahas pengelolaan data student, major, dan subject pada materi Pemrograman Web.</p>
+                                <button type="button" class="btn btn-detail-custom mt-auto report-detail-trigger" data-target="laporan-student-major-subject">Baca Laporan</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-lg-4 col-md-6 col-12 report-item" data-category="desain-web">
                         <div class="card h-100 report-card">
                             <div class="card-body d-flex flex-column">
@@ -155,7 +167,7 @@
                         <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
                         <h2>Praktikum Laravel: Routing, View, dan Controller</h2>
                     </div>
-                    <div class="report-detail-content report-document">
+                    <div class="report-detail-content report-document report-compact">
                         <section class="report-document-block">
                             <h3>1. Pendahuluan</h3>
                             <p>Laravel dikenal secara luas sebagai salah satu kerangka kerja atau framework bahasa pemrograman PHP yang paling diminati untuk membangun berbagai aplikasi berbasis web. Dengan menerapkan pola arsitektur Model-View-Controller atau MVC, framework ini memfasilitasi proses penulisan kode yang lebih sistematis, terorganisir, dan mudah untuk dipelihara.</p>
@@ -300,7 +312,7 @@
                         <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
                         <h2>Migration, Seeding, Routing, Model, Controller, View</h2>
                     </div>
-                    <div class="report-detail-content report-document">
+                    <div class="report-detail-content report-document report-compact">
                         <section class="report-document-block">
                             <h3>A. Pendahuluan</h3>
                             <p>Laravel merupakan salah satu framework PHP yang banyak dipakai untuk membangun aplikasi web modern. Framework ini menyediakan struktur kerja yang rapi melalui konsep MVC atau Model-View-Controller, sehingga proses pengembangan aplikasi menjadi lebih terarah. Dalam Laravel, pengaturan database, routing, model, controller, dan view dapat saling terhubung untuk membentuk alur aplikasi yang lengkap.</p>
@@ -802,6 +814,280 @@ DB_PASSWORD=</code></div>
                             <h3>E. Kesimpulan</h3>
                             <p>Melalui praktikum ini, mahasiswa dapat memahami alur pembuatan aplikasi web modern menggunakan Laravel. Migration membantu mengatur struktur database melalui kode, seeder mempermudah pengisian data awal, model menjadi penghubung antara aplikasi dan tabel database, controller mengatur logika pemrosesan data, sedangkan view menampilkan hasilnya kepada pengguna.</p>
                             <p>Praktikum ini juga menunjukkan bahwa routing berperan penting dalam menghubungkan URL dengan proses aplikasi. Dengan memakai route resource, proses CRUD dapat disusun lebih rapi karena setiap aksi sudah memiliki jalurnya masing-masing. Secara keseluruhan, kombinasi migration, seeding, routing, model, controller, dan view menjadi dasar penting untuk membangun aplikasi CRUD sederhana yang terstruktur dan mudah dikembangkan.</p>
+                            <div class="report-source-actions">
+                                <a class="report-github-button" href="https://github.com/Alramadhanny/Tugas_PraktikumPweb" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    Lihat Repository GitHub
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+
+                <article id="laporan-student-major-subject" class="report-detail" data-category="pemrograman-web">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-pemrograman-web">Pemrograman Web</span>
+                        <h2>Student, Major, dan Subject</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Pada modul praktikum kali ini, materi yang dibahas berpusat pada penerapan relasi antar entitas dalam framework Laravel. Pemahaman konsep relasi ini merupakan hal yang sangat penting ketika membangun aplikasi web yang terhubung dengan basis data. Dengan materi ini, mahasiswa dapat memahami bagaimana satu sistem informasi akademik dapat bekerja secara cepat, terstruktur, dan mudah untuk dikembangkan di kemudian hari.</p>
+                            <p>Studi kasus yang digunakan adalah sistem akademik sederhana yang menyambungkan tiga komponen data utama, yaitu Mahasiswa atau Student, Jurusan atau Major, dan Mata Kuliah atau Subject. Pada pola pertama terdapat relasi One-to-Many antara Major dan Student, karena satu jurusan dapat memiliki banyak mahasiswa, sedangkan satu mahasiswa hanya berada pada satu jurusan.</p>
+                            <p>Pola relasi kedua adalah Many-to-Many antara Student dan Subject. Dalam skenario ini, seorang mahasiswa dapat mengambil lebih dari satu mata kuliah, dan satu mata kuliah yang sama dapat diikuti oleh banyak mahasiswa. Untuk menjembatani hubungan tersebut, Laravel memanfaatkan tabel perantara yang sering disebut sebagai pivot table.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah sebagai berikut.</p>
+                            <ol class="report-objective-list">
+                                <li>Mendapatkan pemahaman teoritis dan teknis mengenai cara kerja relasi antar entitas menggunakan fitur-fitur pada framework Laravel.</li>
+                                <li>Mengimplementasikan logika relasi One-to-Many dan Many-to-Many secara langsung ke dalam basis data akademik.</li>
+                                <li>Menulis dan merancang instruksi migration dengan konfigurasi foreign key yang tepat dan aman antar tabel.</li>
+                                <li>Mengeksekusi proses manipulasi dan penarikan data secara efisien dengan memanfaatkan metode Eloquent relationship.</li>
+                                <li>Membangun halaman antarmuka atau views yang mampu menampilkan kumpulan data saling terhubung dalam format yang terorganisir.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Alat dan Tools</h3>
+                            <ul class="report-tools-list">
+                                <li>Laptop</li>
+                                <li>XAMPP</li>
+                                <li>Visual Studio Code</li>
+                                <li>Composer</li>
+                                <li>Git</li>
+                                <li>Node JS</li>
+                            </ul>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Langkah-Langkah</h3>
+                            <h4>1. Persiapan Struktur Database</h4>
+                            <p>Sistem akademik sederhana ini memuat tiga relasi utama. Mahasiswa berada di satu jurusan dengan pola Many-to-One, jurusan memiliki banyak mahasiswa dengan pola One-to-Many, dan mahasiswa mengambil banyak mata kuliah melalui tabel pivot dengan pola Many-to-Many.</p>
+                            <p>Langkah pertama adalah menyiapkan konfigurasi database pada file <code>.env</code>, mulai dari koneksi MySQL, host, port, nama database, username, sampai password.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-01.png" alt="Konfigurasi database pada file .env">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>2. Membuat File Migration</h4>
+                            <p>Migration digunakan untuk membangun struktur tabel secara otomatis melalui Laravel. Pada praktikum ini, migration dibuat untuk tabel majors, students, subjects, dan tabel pivot student_subject.</p>
+                            <h4 class="report-substep-title">a) Migration Tabel Majors</h4>
+                            <p>Perintah <code>php artisan make:migration create_majors_table</code> digunakan untuk membuat tabel jurusan. Tabel ini memuat kolom dasar seperti <code>id</code>, <code>name</code>, dan <code>timestamps</code>, sedangkan fungsi <code>down()</code> disiapkan untuk menghapus tabel ketika rollback dijalankan.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-02.png" alt="Migration create_majors_table">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">b) Migration Tabel Students</h4>
+                            <p>Migration tabel students mengatur relasi mahasiswa dengan jurusan. Tabel ini memiliki kolom NIM, nama, alamat, dan <code>major_id</code> sebagai foreign key ke tabel majors. Pengaturan <code>onDelete('cascade')</code> membuat data mahasiswa ikut terhapus jika data jurusan terkait dihapus.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-03.png" alt="Migration create_students_table">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">c) Migration Tabel Subjects</h4>
+                            <p>Migration tabel subjects disiapkan untuk menampung data mata kuliah. Kolom yang digunakan adalah nama mata kuliah dan jumlah SKS yang disimpan dengan tipe data integer.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-04.png" alt="Migration create_subjects_table">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">d) Migration Tabel Pivot Student_Subject</h4>
+                            <p>Tabel pivot student_subject digunakan sebagai penghubung relasi Many-to-Many antara mahasiswa dan mata kuliah. Tabel ini menyimpan <code>student_id</code> dan <code>subject_id</code>, dilengkapi aturan unique agar kombinasi mahasiswa dan mata kuliah yang sama tidak tersimpan berulang.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-05.png" alt="Migration create_student_subject_table">
+                                </figure>
+                            </div>
+                            <p>Setelah semua file migration selesai dibuat, jalankan perintah <code>php artisan migrate</code> untuk mengeksekusi struktur tabel ke database.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>3. Konfigurasi Model dan Relasi</h4>
+                            <h4 class="report-substep-title">a) Model Major</h4>
+                            <p>Model Major dibuat menggunakan perintah <code>php artisan make:model Major</code>. Pada model ini, kolom <code>name</code> diizinkan untuk mass assignment, lalu relasi <code>hasMany</code> ke model Student didefinisikan karena satu jurusan dapat memiliki banyak mahasiswa.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-06.png" alt="Model Major dengan relasi hasMany Student">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">b) Model Student</h4>
+                            <p>Model Student dibuat menggunakan perintah <code>php artisan make:model Student</code>. Model ini memuat relasi <code>belongsTo</code> ke Major karena mahasiswa masuk ke satu jurusan, serta relasi <code>belongsToMany</code> ke Subject karena mahasiswa dapat mengambil banyak mata kuliah.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-07.png" alt="Model Student dengan relasi major dan subjects">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">c) Model Subject</h4>
+                            <p>Model Subject dibuat menggunakan perintah <code>php artisan make:model Subject</code>. Model ini mendefinisikan relasi timbal balik <code>belongsToMany</code> ke model Student agar dapat diketahui siapa saja mahasiswa yang mengambil mata kuliah tertentu.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-08.png" alt="Model Subject dengan relasi belongsToMany Student">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>4. Pembuatan Seeder</h4>
+                            <h4 class="report-substep-title">a) MajorSeeder</h4>
+                            <p>MajorSeeder dibuat untuk mengisi data awal jurusan seperti Teknik Informatika, Sistem Informasi, Teknik Komputer, dan Manajemen Informatika. Data tersebut disimpan menggunakan metode <code>Major::create()</code>.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-09.png" alt="MajorSeeder untuk data jurusan">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">b) SubjectSeeder</h4>
+                            <p>SubjectSeeder berfungsi menyimpan daftar mata kuliah beserta bobot SKS-nya, seperti Pemrograman Web, Database, Algoritma, Jaringan Komputer, dan Sistem Operasi.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-10.png" alt="SubjectSeeder untuk data mata kuliah">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">c) StudentSeeder</h4>
+                            <p>StudentSeeder dibuat untuk mengisi data beberapa mahasiswa lengkap dengan jurusannya. Seeder ini juga mengacak dan menautkan mata kuliah ke setiap mahasiswa menggunakan metode <code>attach()</code> pada relasi pivot.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-11.png" alt="StudentSeeder dengan attach subject">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">d) DatabaseSeeder</h4>
+                            <p>DatabaseSeeder digunakan untuk memanggil beberapa seeder sekaligus, yaitu MajorSeeder, SubjectSeeder, dan StudentSeeder. Setelah itu, perintah <code>php artisan db:seed</code> dijalankan untuk memasukkan semua data awal ke database.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-12.png" alt="DatabaseSeeder memanggil semua seeder">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>5. Controller</h4>
+                            <p>Controller dibuat menggunakan perintah <code>php artisan make:controller StudentController</code>. Controller ini berfungsi sebagai pengendali data mahasiswa, mulai dari menampilkan daftar mahasiswa, melihat detail, membuka form tambah data, menyimpan data baru, mengedit data, memperbarui data, sampai menghapus data.</p>
+                            <p>Pada method <code>index()</code>, data mahasiswa diambil menggunakan eager loading dengan <code>with()</code> agar relasi major dan subjects langsung ikut terbaca. Cara ini membantu mencegah masalah N+1 query dan membuat proses pengambilan data menjadi lebih efisien.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-13.png" alt="StudentController untuk CRUD mahasiswa">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>6. Routing</h4>
+                            <p>Routing ditambahkan pada file <code>web.php</code> menggunakan <code>Route::resource('students', StudentController::class)</code>. Route resource membuat seluruh route CRUD terbentuk otomatis, mulai dari index, create, store, show, edit, update, sampai destroy.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-14.png" alt="Route resource untuk StudentController">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>7. Views</h4>
+                            <h4 class="report-substep-title">a) Layout Utama app.blade.php</h4>
+                            <p>File <code>app.blade.php</code> dibuat sebagai layout utama. File ini menggunakan Bootstrap untuk merapikan tampilan, menyediakan navbar sederhana, dan menyiapkan tempat konten melalui <code>@yield('content')</code>.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-15.png" alt="Layout utama app.blade.php">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">b) Halaman Utama index.blade.php</h4>
+                            <p>Halaman <code>index.blade.php</code> digunakan untuk menampilkan tabel data mahasiswa. Nama jurusan diambil melalui relasi <code>$student-&gt;major-&gt;name</code>, sedangkan daftar mata kuliah ditampilkan sebagai badge atau label agar mudah dibaca.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-16.png" alt="Halaman index.blade.php untuk daftar mahasiswa">
+                                </figure>
+                            </div>
+                            <h4 class="report-substep-title">c) Halaman Formulir create.blade.php</h4>
+                            <p>Halaman ini digunakan untuk menambahkan mahasiswa baru. Form berisi input NIM, nama, alamat, pilihan jurusan, dan pilihan mata kuliah agar data mahasiswa dapat langsung tersambung dengan major dan subject.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-17.png" alt="Bagian awal form create mahasiswa">
+                                </figure>
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-18.png" alt="Bagian lanjutan form create mahasiswa dengan pilihan jurusan dan mata kuliah">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>8. Output</h4>
+                            <p>Setelah semua bagian selesai dibuat, jalankan <code>php artisan serve</code>, lalu buka halaman <code>http://127.0.0.1:8000/students</code> untuk melihat hasil aplikasi.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-19.png" alt="Daftar mahasiswa pada halaman students">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-20.png" alt="Form tambah mahasiswa">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-21.png" alt="Halaman detail mahasiswa">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-22.png" alt="Halaman edit mahasiswa">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>E. Tugas</h3>
+                            <h4>1. Buat StudentController</h4>
+                            <p>Untuk membuat file StudentController, jalankan perintah <code>php artisan make:controller StudentController</code>. Setelah dijalankan, file controller akan terbentuk dan siap diisi dengan logika pengelolaan data mahasiswa.</p>
+                            <h4>2. Tambahkan Route untuk StudentController</h4>
+                            <p>Route ditambahkan pada file <code>web.php</code> dengan mengarahkan halaman utama ke route students dan menambahkan <code>Route::resource('students', StudentController::class)</code>.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-23.png" alt="Route students pada file web.php">
+                                </figure>
+                            </div>
+                            <h4>3. Perbarui StudentController</h4>
+                            <p>Pada method <code>index()</code>, controller diperbarui untuk menampilkan seluruh mahasiswa beserta jurusan, mata kuliah, dan total SKS. Controller juga mencari jurusan dengan mahasiswa terbanyak, serta mengambil daftar mata kuliah dari salah satu mahasiswa tertentu sebagai contoh relasi.</p>
+                            <p>Pada bagian edit, update, dan destroy, relasi mata kuliah tetap dijaga menggunakan <code>sync()</code> untuk memperbarui pilihan subject dan <code>detach()</code> untuk memutus relasi sebelum data mahasiswa dihapus.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-24.png" alt="StudentController bagian index sampai store">
+                                </figure>
+                                <figure class="report-figure compact-figure">
+                                    <img src="images/laprak8/laprak8-25.png" alt="StudentController bagian edit, update, dan destroy">
+                                </figure>
+                            </div>
+                            <h4>4. Perbarui Index.blade.php</h4>
+                            <p>Halaman index diperbarui dengan dua kotak informasi tambahan untuk menampilkan jurusan dengan mahasiswa terbanyak dan daftar mata kuliah yang diambil oleh mahasiswa tertentu. Pada tabel utama, total SKS juga ditampilkan agar informasi akademik menjadi lebih lengkap.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-26.png" alt="Bagian awal index.blade.php dengan ringkasan jurusan dan total SKS">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-27.png" alt="Bagian lanjutan index.blade.php untuk tabel mahasiswa">
+                                </figure>
+                            </div>
+                            <h4>5. Output</h4>
+                            <p>Hasil akhir menunjukkan halaman daftar mahasiswa yang sudah dilengkapi informasi jurusan, mata kuliah, total SKS, serta kotak ringkasan data akademik.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="images/laprak8/laprak8-28.png" alt="Output akhir halaman Student Management">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>F. Kesimpulan</h3>
+                            <p>Melalui praktikum ini, mahasiswa berhasil mempraktikkan proses perancangan relasi One-to-Many dan Many-to-Many menggunakan framework Laravel. Relasi tersebut membantu aplikasi menghubungkan data mahasiswa, jurusan, dan mata kuliah dengan struktur database yang lebih rapi.</p>
+                            <p>Praktikum ini juga menunjukkan pentingnya penggunaan foreign key, model relationship, eager loading, seeder, controller, routing, dan view dalam membangun aplikasi web berbasis database. Dengan pendekatan ini, data yang saling berhubungan dapat ditampilkan secara efisien, kodenya lebih mudah dirawat, dan aplikasi siap dikembangkan menjadi sistem yang lebih besar.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <div class="card report-repository-card">
+                                <div class="card-body">
+                                    <a class="report-github-button" href="https://github.com/Alramadhanny/Praktikum_PemogramanWeb/tree/main/Praktikum8" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                        Menuju Repository
+                                    </a>
+                                </div>
+                            </div>
                         </section>
                     </div>
                 </article>

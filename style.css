@@ -559,6 +559,105 @@ nav a.active {
     margin-top: 8px;
 }
 
+.report-compact .report-document-block {
+    padding: 0;
+}
+
+.report-compact .report-document-block + .report-document-block {
+    margin-top: 16px;
+}
+
+.report-compact p,
+.report-compact li {
+    line-height: 1.5;
+}
+
+.report-compact .report-document-block h3,
+.report-compact .report-document-block h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.report-compact .report-substep-title {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.report-compact p + p,
+.report-compact p + ol,
+.report-compact p + ul,
+.report-compact ol + p,
+.report-compact ul + p,
+.report-compact .report-image-stack + p,
+.report-compact .report-image-grid + p {
+    margin-top: 14px;
+}
+
+.report-compact p + h4,
+.report-compact h4 + h4,
+.report-compact .report-image-stack + h4,
+.report-compact .report-image-grid + h4 {
+    margin-top: 14px;
+}
+
+.report-compact .report-command-list,
+.report-compact .report-challenge-list,
+.report-compact .report-objective-list,
+.report-compact .report-tools-list {
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.report-compact .report-image-stack,
+.report-compact .report-image-grid {
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.report-compact .report-figure {
+    max-width: 720px;
+}
+
+.report-repository-card {
+    border: 1px solid rgba(26, 60, 94, 0.12);
+    border-radius: var(--radius-std);
+    box-shadow: var(--shadow-sm);
+}
+
+.report-repository-card .card-body {
+    padding: 18px;
+}
+
+.report-source-actions {
+    margin-top: 18px;
+}
+
+.report-github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: var(--radius-std);
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.report-github-button:hover {
+    background-color: var(--primary-dark);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.report-github-button i {
+    font-size: 18px;
+}
+
 .report-command-list,
 .report-challenge-list,
 .report-objective-list,
@@ -865,5 +964,8 @@ footer .container {
     }
     .report-image-grid {
         grid-template-columns: 1fr;
+    }
+    .report-github-button {
+        width: 100%;
     }
 }
