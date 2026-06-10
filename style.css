@@ -682,7 +682,8 @@ nav a.active {
 
 .report-code-line,
 .report-code-block {
-    margin-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     padding: 12px 14px;
     border-radius: var(--radius-std);
     background-color: #0f172a;
@@ -968,4 +969,43 @@ footer .container {
     .report-github-button {
         width: 100%;
     }
+}
+
+.report-image-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: var(--radius-std);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.report-screenshot {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* --- Report Detail Spacing Adjustments --- */
+.report-detail-content h3, 
+.report-detail-content h4, 
+.report-detail-content h5 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.report-detail-content p {
+    margin-bottom: 20px;
+}
+
+.report-code-line,
+.report-code-block {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+}
+
+.report-image-container {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
 }
