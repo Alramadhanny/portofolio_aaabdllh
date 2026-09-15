@@ -312,6 +312,31 @@ nav a.active {
     color: #fff; 
 }
 
+.btn-github {
+    padding: 8px 25px;
+    background-color: #24292e;
+    border: 1px solid #24292e;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-github:hover {
+    background-color: #1a1e22;
+    border-color: #1a1e22;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-github i {
+    margin-right: 5px;
+}
+
 .modal-content-custom { 
     border-radius: 10px; 
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
@@ -476,6 +501,7 @@ nav a.active {
 .badge-pbo { background-color: #dc3545; }
 .badge-sistem-operasi { background-color: var(--badge-yellow); color: var(--text-main); }
 .badge-basis-data { background-color: var(--badge-green); }
+.badge-aplikasi-mobile { background-color: #02569B; }
 
 #report-detail-section {
     display: none;
@@ -980,9 +1006,10 @@ footer .container {
 }
 
 .report-screenshot {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 
