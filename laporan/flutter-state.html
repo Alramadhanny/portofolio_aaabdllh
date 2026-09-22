@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 2: State Management Dasar - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 2: State Management Dasar</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-state" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 2: State Management Dasar</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Pembangunan aplikasi masa kini menuntut cara yang efisien dalam menciptakan antarmuka pengguna yang responsif dan menarik. Flutter, sebuah framework yang menggunakan bahasa Dart, menawarkan pendekatan UI deklaratif, di mana semua elemen antarmuka dibentuk lewat komponen modular bernama widget. Struktur dasar aplikasi Flutter biasanya dimulai dengan kontainer utama seperti MaterialApp dan Scaffold, yang berperan sebagai pondasi untuk tata letak, tema, dan keseluruhan tampilan visual.</p>
+                            <p>Di dalam Flutter, pengelolaan tampilan terbagi menjadi dua: StatelessWidget untuk komponen yang bersifat statis dan tidak mengalami perubahan, serta StatefulWidget untuk komponen dinamis yang mampu menyimpan data internal. Praktikum ini menitikberatkan pada penerapan konsep dasar manajemen state menggunakan fungsi setState(), yang diwujudkan melalui pembuatan antarmuka dasbor interaktif berisi sapaan pengguna dan kartu saldo dengan fitur penyensoran nominal serta penyesuaian tampilan.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami susunan dasar aplikasi Flutter beserta hubungan hierarki widget melalui penggunaan MaterialApp dan Scaffold.</li>
+                                <li>Mengidentifikasi perbedaan peran, sifat, dan penerapan StatelessWidget maupun StatefulWidget saat membangun antarmuka aplikasi.</li>
+                                <li>Menggunakan setState() untuk memperbarui tampilan secara dinamis ketika terdapat perubahan pada data atau kondisi aplikasi.</li>
+                                <li>Merancang struktur antarmuka yang rapi dengan mengombinasikan widget Row, Column, Card, dan Padding.</li>
+                                <li>Menyesuaikan warna pada kartu saldo serta menambahkan informasi nomor rekening berbentuk teks statis sesuai ketentuan praktikum.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Langkah Praktikum</h3>
+
+                            <h4>1. Widget Sapaan (Stateless)</h4>
+                            <p>Kode ini mendefinisikan StatelessWidget bernama GreetingWidget untuk menampilkan header sapaan yang bersifat statis dan tidak berubah setelah pertama kali ditampilkan. Tampilannya disusun secara horizontal menggunakan Row, yang memuat Column di sisi kiri untuk menumpuk teks sapaan secara vertikal, serta CircleAvatar di sisi kanan sebagai tempat ikon profil pengguna.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/1.png" alt="Kode GreetingWidget (StatelessWidget)">
+                                </figure>
+                            </div>
+
+                            <h4>2. Kartu Saldo (Stateful)</h4>
+                            <p>Kode ini menyusun kerangka dasar StatefulWidget bernama BalanceCard dengan memisahkan dua kelas agar tampilannya bisa berubah-ubah dan merespons interaksi pengguna. Kelas _BalanceCardState berperan menyimpan status internal, di mana variabel boolean _isObscure mengatur apakah nominal saldo disembunyikan atau ditampilkan, sementara variabel _balance menyimpan nilai uang yang akan ditampilkan.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/2.png" alt="Kode BalanceCardWidget (StatefulWidget + setState)">
+                                </figure>
+                            </div>
+
+                            <h4>3. Menambahkan Interaktivitas (setState)</h4>
+                            <p>Kode ini membuat tombol IconButton menjadi interaktif dengan memanggil setState(), yang berfungsi membalik nilai _isObscure setiap kali ikon ditekan. Pemanggilan setState() memberi tahu Flutter untuk memperbarui tampilan UI, sehingga logika operator ternary otomatis mengganti teks saldo antara versi tersensor dan nilai asli, sekaligus mengubah ikon mata yang menyertainya.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/3.png" alt="Kode return Card dengan IconButton dan setState">
+                                </figure>
+                            </div>
+
+                            <h4>4. Hasil Akhir</h4>
+                            <p>Setelah semua komponen diimplementasikan, aplikasi menampilkan antarmuka dasbor yang terdiri dari widget sapaan di bagian atas, disusul dengan kartu saldo yang dapat disensor nominalnya menggunakan ikon mata.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/4.png" alt="Hasil akhir aplikasi dengan kartu saldo biru">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Tugas</h3>
+                            <ol class="report-challenge-list">
+                                <li>Ubah warna tema BalanceCard dari biru (Colors.blueAccent) menjadi hijau emerald (Colors.teal).</li>
+                            </ol>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/5.png" alt="Kode perubahan warna ke Colors.teal">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/6.png" alt="Hasil kartu saldo dengan warna teal (belum ada No. Rekening)">
+                                </figure>
+                            </div>
+                            <ol class="report-challenge-list" start="2">
+                                <li>Tambahkan teks statis berupa "No. Rekening: 1234-5678" di bagian bawah nominal saldo di dalam kartu.</li>
+                            </ol>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/7.png" alt="Kode penambahan teks No. Rekening: 1234-5678">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak2/8.png" alt="Hasil akhir kartu saldo teal dengan No. Rekening">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>E. Kesimpulan</h3>
+                            <p>Berdasarkan kegiatan praktikum yang telah dijalankan, dapat ditarik kesimpulan bahwa memisahkan StatelessWidget dan StatefulWidget menjadi landasan utama dalam merancang antarmuka Flutter yang optimal. Widget GreetingWidget berhasil diimplementasikan sebagai komponen statis untuk menampilkan ucapan sapaan beserta avatar pengguna, sementara BalanceCardWidget berhasil menghadirkan kartu saldo yang interaktif, mampu merespons ketukan pada ikon mata untuk menyembunyikan atau menampilkan jumlah saldo secara langsung dengan memanfaatkan metode setState().</p>
+                            <p>Di samping itu, tugas praktikum berhasil diselesaikan dengan mengganti skema warna BalanceCardWidget dari Colors.blueAccent menjadi Colors.teal, serta menyisipkan teks statis berisi nomor rekening tepat di bawah angka saldo dalam struktur layout Column. Secara keseluruhan, praktikum ini memperdalam pemahaman tentang hierarki komposisi widget, penataan layout, serta logika dasar pengelolaan state pada Flutter.</p>
+                            <div class="report-source-actions">
+                                <a class="report-github-button" href="https://github.com/Alramadhanny/Praktikum_Aplikasi-Mobile_A_Abdullah-Al-Ramadhani_2411533016" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    Lihat Repository GitHub
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

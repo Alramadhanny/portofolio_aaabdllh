@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 2: Layouting dan Styling Dasar - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 2: Layouting dan Styling Dasar</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-layout" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 2: Layouting dan Styling Dasar</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Pengembangan aplikasi mobile dengan Flutter memberikan kemudahan dalam menciptakan antarmuka pengguna yang modern dan responsif berkat konsep tata letak berbasis widget. Pengorganisasian elemen visual secara terstruktur sangat krusial agar informasi dapat ditampilkan dengan jelas dan mudah diakses oleh pengguna di berbagai ukuran layar perangkat mobile.</p>
+                            <p>Praktikum ini menitikberatkan pada penerapan dasar-dasar layouting dan styling di Flutter melalui studi kasus pembuatan antarmuka aplikasi Expense Tracker. Dalam kegiatan ini, dilakukan eksplorasi terhadap penggunaan widget Row, Column, Container, dan ListTile, penyusunan tata letak yang dapat digulir menggunakan SingleChildScrollView, serta penyelesaian tugas berupa modifikasi tampilan visual dan penambahan data transaksi.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami prinsip dasar layouting dan styling di Flutter melalui pemanfaatan widget Row, Column, Container, dan ListTile.</li>
+                                <li>Menggunakan Row untuk menyusun elemen secara horizontal dan Column untuk menata elemen secara vertikal dalam membangun antarmuka aplikasi.</li>
+                                <li>Menangani masalah overflow pada tampilan layar dengan menerapkan widget SingleChildScrollView.</li>
+                                <li>Menerapkan kustomisasi warna pada teks nominal transaksi guna membedakan antara kategori pemasukan dan pengeluaran.</li>
+                                <li>Menambahkan data transaksi fiktif baru secara terstruktur ke dalam daftar riwayat transaksi.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Langkah Praktikum</h3>
+
+                            <h4>1. Menata Tombol Aksi (Row)</h4>
+                            <p>Kode ini mengatur tiga tombol tindakan ("Masuk", "Keluar", dan "Transfer") agar tersusun secara horizontal memakai widget Row. Dengan menetapkan mainAxisAlignment: MainAxisAlignment.spaceEvenly, ruang di antara ketiga tombol tersebut dibagi secara otomatis dan merata. Tampilan visual setiap tombol dibentuk melalui fungsi pembantu _buildButton.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/1.png" alt="Kode menata tombol aksi menggunakan Row">
+                                </figure>
+                            </div>
+
+                            <h4>2. Menata Riwayat Transaksi (Column + ListTile)</h4>
+                            <p>Kode ini memanfaatkan widget Column untuk menyusun daftar transaksi secara vertikal dari atas ke bawah dengan perataan ke kiri. Di dalamnya, widget Text digunakan sebagai judul bagian, sementara setiap entri riwayat dibuat menggunakan ListTile yang secara otomatis menempatkan ikon di sisi kiri, nama transaksi di tengah, dan nilai nominal di ujung kanan dengan tampilan yang rapi.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/2.png" alt="Kode menata riwayat transaksi menggunakan Column dan ListTile">
+                                </figure>
+                            </div>
+
+                            <h4>3. Menggabungkan Dashboard (Scrollable)</h4>
+                            <p>Kode ini berperan menyatukan seluruh komponen antarmuka dari Modul 1 dan Modul 2 ke dalam satu halaman utama. Penggunaan SingleChildScrollView memungkinkan halaman digulir secara vertikal, sehingga menghindari masalah overflow ketika jumlah komponen bertambah banyak. Widget Padding ditambahkan untuk memberikan jarak tepi sebesar 16 piksel di sekeliling Column yang membungkus semua elemen tersebut.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/3.png" alt="Kode menggabungkan dashboard menggunakan SingleChildScrollView">
+                                </figure>
+                            </div>
+
+                            <h4>4. Hasil Akhir (Mockup Dashboard)</h4>
+                            <p>Setelah seluruh komponen digabungkan, aplikasi menampilkan mockup dashboard expense tracker yang terdiri dari tombol aksi di bagian atas, diikuti dengan riwayat transaksi yang dapat digulir secara vertikal tanpa mengalami overflow.</p>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/4.png" alt="Hasil akhir mockup dashboard expense tracker">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Tugas</h3>
+                            <ol class="report-challenge-list">
+                                <li>Pada widget Daftar Transaksi (ListTile), ubah warna trailing text pengeluaran menjadi merah dan text pemasukan menjadi hijau.</li>
+                            </ol>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/5.png" alt="Kode perubahan warna trailing text transaksi">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/6.png" alt="Hasil perubahan warna pengeluaran merah dan pemasukan hijau">
+                                </figure>
+                            </div>
+                            <ol class="report-challenge-list" start="2">
+                                <li>Tambahkan 2 transaksi fiktif baru ke dalam daftar "Transaksi Terakhir" di bawah kode yang sudah ada.</li>
+                            </ol>
+                            <div class="report-image-stack">
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/7.png" alt="Kode penambahan 2 transaksi fiktif baru">
+                                </figure>
+                                <figure class="report-figure">
+                                    <img src="../images/aplikasi_mobile_laprak3/8.png" alt="Hasil daftar transaksi terakhir dengan data baru">
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>E. Kesimpulan</h3>
+                            <p>Berdasarkan kegiatan praktikum yang telah dijalankan, pembangunan antarmuka aplikasi Expense Tracker berhasil dicapai dengan mengombinasikan berbagai widget layouting pada Flutter secara optimal. Pemakaian Row mempermudah penyusunan tombol aksi secara mendatar, Column membantu menata daftar transaksi secara tegak lurus, dan SingleChildScrollView menjamin seluruh konten tetap dapat dijangkau tanpa mengalami overflow ketika jumlah transaksi bertambah.</p>
+                            <p>Di samping itu, penerapan gaya pada widget ListTile terbukti menciptakan perbedaan visual yang jelas antara transaksi pemasukan dan pengeluaran lewat variasi warna pada teks nominal. Penambahan data transaksi baru juga menunjukkan keluwesan struktur kode yang telah dirancang, sehingga aplikasi menghadirkan antarmuka yang tertata, kaya informasi, dan mudah untuk dikembangkan lebih jauh.</p>
+                            <div class="report-source-actions">
+                                <a class="report-github-button" href="https://github.com/Alramadhanny/Praktikum_Aplikasi-Mobile_A_Abdullah-Al-Ramadhani_2411533016" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    Lihat Repository GitHub
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
