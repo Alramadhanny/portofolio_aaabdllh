@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 3: Input Widgets & Forms dengan Validasi - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 3: Input Widgets & Forms dengan Validasi</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-form-validation" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 3: Input Widgets & Forms dengan Validasi</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Pengembangan aplikasi mobile menggunakan Flutter umumnya melibatkan formulir sebagai sarana utama untuk menerima data dari pengguna. Pada praktikum ini, pembahasan diarahkan pada pemanfaatan Input Widgets & Forms, terutama penerapan widget Form dan GlobalKey untuk mengelompokkan, mengatur, serta memvalidasi beberapa komponen input dalam satu kesatuan. Selain itu, TextFormField digunakan sebagai elemen masukan teks yang memiliki dukungan validasi bawaan, sedangkan TextEditingController berfungsi untuk mengambil, memantau, dan mengelola teks yang dimasukkan pengguna.</p>
+                            <p>Studi kasus yang digunakan adalah pembuatan halaman formulir Catat Transaksi Baru pada aplikasi Expense Tracker. Formulir tersebut menyediakan beberapa jenis masukan, seperti kolom judul transaksi, kolom nominal dengan konfigurasi papan ketik numerik, serta pilihan kategori melalui DropdownButtonFormField. Sebagai pengembangan tambahan, bagian tugas juga menerapkan fitur pemilihan tanggal transaksi menggunakan showDatePicker, dengan format tanggal DD/MM/YYYY.</p>
+                            <p>Setiap komponen input dilengkapi mekanisme validasi untuk memastikan pengguna tidak mengirimkan data kosong maupun nilai nominal dengan format yang tidak valid. Setelah seluruh data dinyatakan sesuai, informasi transaksi dapat diproses dan hasilnya ditampilkan kepada pengguna melalui notifikasi SnackBar.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <ol class="report-objective-list">
+                                <li>Memanfaatkan TextEditingController untuk membaca, menyimpan, dan mengatur teks yang dimasukkan oleh pengguna.</li>
+                                <li>Menggunakan DropdownButtonFormField sebagai menu pilihan kategori transaksi dengan daftar opsi yang telah ditentukan sebelumnya.</li>
+                                <li>Menambahkan aturan validasi pada setiap kolom formulir agar data kosong atau input yang tidak sesuai ketentuan, termasuk penggunaan huruf pada kolom nominal, dapat ditolak.</li>
+                                <li>Menerapkan showDatePicker untuk menampilkan kalender interaktif sehingga pengguna dapat memilih tanggal transaksi dengan pola penulisan DD/MM/YYYY.</li>
+                                <li>Menjadikan Form dan GlobalKey sebagai pusat pengelolaan formulir untuk mengatur sekaligus memeriksa seluruh input secara terpadu.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Langkah Pengerjaan</h3>
+                            <h4>a. Praktikum</h4>
+                            
+                            <p><strong>1) Membuat File add_transaction_screen.dart</strong></p>
+                            <p>Buatlah berkas baru bernama add_transaction_screen.dart sebagai tempat untuk mengembangkan halaman penambahan transaksi.</p>
+
+                            <p><strong>2) Menyiapkan State dan Controller</strong></p>
+                            <p>Pada tahap ini, deklarasikan berbagai variabel yang diperlukan di dalam class _AddTransactionScreenState. Variabel _formKey berfungsi sebagai identitas unik untuk mengakses dan memeriksa seluruh isi formulir. Selanjutnya, buat dua TextEditingController untuk membaca data dari kolom judul serta nominal transaksi. Sementara itu, variabel _selectedCategory diberi nilai awal Makanan sebagai kategori yang dipilih secara default pada menu dropdown.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/1.png" alt="Deklarasi state dan controller" class="report-screenshot"></div>
+
+                            <p><strong>3) Membangun Field Masukan dengan TextFormField</strong></p>
+                            <p>Tambahkan dua kolom input TextFormField ke dalam widget Form yang menggunakan _formKey. Kolom pertama digunakan untuk memasukkan nama atau judul transaksi dan dilengkapi aturan agar tidak boleh dibiarkan kosong. Kolom kedua digunakan untuk mengisi jumlah nominal, dengan pengaturan TextInputType.number agar kibor numerik muncul. Field nominal tersebut memiliki validasi berlapis untuk memeriksa apakah input telah diisi dan apakah nilainya benar-benar berupa angka.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/2.png" alt="TextFormField untuk judul dan nominal" class="report-screenshot"></div>
+
+                            <p><strong>4) Menambahkan Dropdown dan Tombol Penyimpanan</strong></p>
+                            <p>Gunakan DropdownButtonFormField untuk menampilkan daftar kategori transaksi. Setiap perubahan pilihan akan memperbarui nilai _selectedCategory. Setelah itu, tambahkan ElevatedButton yang menjalankan proses pemeriksaan formulir melalui _formKey.currentState!.validate(). Jika semua data telah memenuhi aturan validasi, aplikasi akan menampilkan SnackBar sebagai pemberitahuan bahwa data berhasil diproses.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/3.png" alt="Dropdown dan tombol simpan" class="report-screenshot"></div>
+
+                            <p><strong>5) Hasil Tampilan Praktikum</strong></p>
+                            <p>Setelah seluruh tahapan selesai diterapkan, halaman aplikasi akan menampilkan tampilan akhir seperti pada contoh output berikut.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/4.png" alt="Hasil tampilan praktikum" class="report-screenshot"></div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>b. Tugas</h4>
+                            
+                            <p><strong>1) Menambahkan Controller Baru untuk Tanggal</strong></p>
+                            <p>Tambahkan _dateController pada bagian deklarasi state untuk menampung nilai tanggal yang dipilih oleh pengguna.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/5.png" alt="Menambahkan date controller" class="report-screenshot"></div>
+
+                            <p><strong>2) Membuat Proses Pemilihan Tanggal</strong></p>
+                            <p>Buat method asynchronous bernama _selectDate yang bertugas membuka kalender melalui showDatePicker. Setelah tanggal dipilih, ubah nilainya ke format DD/MM/YYYY, kemudian simpan hasilnya ke dalam controller.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/6.png" alt="Method selectDate dengan showDatePicker" class="report-screenshot"></div>
+
+                            <p><strong>3) Mengelola Penggunaan Memori dengan Dispose</strong></p>
+                            <p>Pastikan _dateController dipanggil pada method dispose() ketika halaman tidak lagi digunakan. Langkah ini diperlukan agar controller dibersihkan dengan benar dan tidak menimbulkan kebocoran memori.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/7.png" alt="Dispose date controller" class="report-screenshot"></div>
+
+                            <p><strong>4) Menambahkan Field untuk Tanggal</strong></p>
+                            <p>Letakkan TextFormField baru sebelum tombol penyimpanan. Atur properti readOnly menjadi true supaya pengguna tidak dapat mengetik tanggal secara manual dan kibor tidak ditampilkan. Hubungkan event onTap dengan _selectDate agar kalender muncul ketika kolom ditekan, serta tambahkan validasi untuk memastikan tanggal tidak boleh kosong.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/8.png" alt="TextFormField untuk tanggal" class="report-screenshot"></div>
+
+                            <p><strong>5) Menyesuaikan Isi SnackBar</strong></p>
+                            <p>Ubah pesan notifikasi keberhasilan dengan menyertakan nilai dari _dateController.text, sehingga tanggal transaksi yang dipilih turut ditampilkan kepada pengguna.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/9.png" alt="Menyesuaikan SnackBar" class="report-screenshot"></div>
+
+                            <p><strong>6) Hasil Akhir dengan Fitur Tanggal</strong></p>
+                            <p>Setelah semua perubahan diterapkan, hasil tampilan aplikasi akan terlihat seperti contoh output yang ditunjukkan berikut. Aplikasi kini memiliki fitur pemilihan tanggal yang terintegrasi dengan formulir transaksi.</p>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/10.png" alt="Hasil akhir dengan fitur tanggal - tampilan 1" class="report-screenshot"></div>
+                            <div class="report-image-container"><img src="../images/aplikasi_mobile_laprak3_form/11.png" alt="Hasil akhir dengan fitur tanggal - tampilan 2" class="report-screenshot"></div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Kesimpulan</h3>
+                            <p>Berdasarkan kegiatan praktikum tersebut, dapat diketahui bahwa pembuatan formulir interaktif di Flutter dapat dilakukan secara rapi dengan menggabungkan widget Form dan TextFormField. Pemakaian GlobalKey&lt;FormState&gt; memudahkan pengembang dalam mengakses serta menjalankan validasi terhadap seluruh kolom secara bersamaan melalui satu aksi pada tombol simpan. Di sisi lain, pengambilan nilai dari setiap input menjadi lebih praktis dengan bantuan TextEditingController, sehingga pengembang tidak perlu memantau perubahan state secara manual.</p>
+                            <p>Validasi juga memiliki peran penting dalam memastikan data yang diterima aplikasi tetap benar dan sesuai aturan. Melalui proses ini, kolom yang belum diisi dapat ditolak, sedangkan nilai nominal dapat dibatasi agar hanya menerima angka dan diperiksa menggunakan int.tryParse. Penambahan fitur showDatePicker pada bagian latihan atau tugas memperlihatkan bahwa Flutter mampu menyediakan mekanisme input tanggal yang lebih mudah dan nyaman digunakan.</p>
+                            <p>Dengan demikian, praktikum ini menghasilkan halaman pencatatan transaksi yang memiliki komponen input lengkap, dilengkapi perlindungan terhadap kesalahan format data, serta memiliki struktur yang dapat dikembangkan ke tahap berikutnya, termasuk penyimpanan informasi ke dalam basis data.</p>
+                            <div class="report-source-actions">
+                                <a class="report-github-button" href="https://github.com/Alramadhanny/Praktikum_Aplikasi-Mobile_A_Abdullah-Al-Ramadhani_2411533016/tree/praktikum3" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    Lihat Repository GitHub
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
