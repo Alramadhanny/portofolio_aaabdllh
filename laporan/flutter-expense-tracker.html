@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 5: Navigasi dan Expense Tracker - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 5: Navigasi dan Expense Tracker</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-expense-tracker" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 5: Navigasi dan Expense Tracker</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Navigasi merupakan salah satu bagian penting dalam pengembangan aplikasi mobile karena memungkinkan pengguna berpindah dari satu halaman ke halaman lain secara teratur. Pada Flutter, perpindahan halaman dapat diatur menggunakan Named Routes, yaitu pemberian nama pada setiap rute yang didaftarkan di dalam MaterialApp. Selain itu, BottomNavigationBar digunakan untuk menyediakan menu navigasi di bagian bawah aplikasi sehingga pengguna dapat membuka halaman utama seperti Dashboard, Riwayat Transaksi, dan Profil dengan mudah.</p>
+                            <p>Pada Praktikum V ini dikembangkan aplikasi pencatat keuangan sederhana bernama Expense Tracker. Aplikasi menggabungkan navigasi halaman, formulir login, ringkasan keuangan, penambahan transaksi, daftar riwayat transaksi, dan halaman profil. Praktikum ini juga menerapkan StatefulWidget, setState(), serta penyimpanan data sementara agar perubahan transaksi dapat langsung terlihat pada halaman aplikasi.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami penerapan Named Routes untuk mengatur perpindahan halaman pada Flutter.</li>
+                                <li>Membuat BottomNavigationBar untuk berpindah antara Dashboard, Riwayat Transaksi, dan Profil.</li>
+                                <li>Menerapkan StatefulWidget dan setState() untuk menangani perubahan tab dan input pengguna.</li>
+                                <li>Membuat halaman login berisi kolom email dan password serta meneruskan email ke halaman utama.</li>
+                                <li>Membuat halaman penambahan transaksi dan menampilkan hasilnya pada Dashboard serta Riwayat Transaksi.</li>
+                                <li>Membuat halaman Profil berisi avatar, nama, email, dan tombol logout.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Isi</h3>
+                            
+                            <h4>Praktikum</h4>
+                            
+                            <div class="report-substep-title"><strong>1. Membuat Named Routes (main.dart)</strong></div>
+                            <p>MaterialApp merupakan konfigurasi utama aplikasi. Properti initialRoute menentukan halaman pertama yang dibuka, yaitu LoginScreen. Map routes mendaftarkan nama rute beserta widget tujuan: /login untuk halaman login, / untuk halaman utama, dan /add untuk formulir penambahan transaksi. Dengan cara ini, perpindahan halaman dapat dilakukan berdasarkan nama rute tanpa membuat MaterialPageRoute secara berulang.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/1.png" alt="Named Routes Configuration" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>2. Menentukan tab yang aktif (main_screen.dart)</strong></div>
+                            <p>MainScreen dibuat sebagai StatefulWidget karena tab yang dipilih dapat berubah selama aplikasi berjalan. Variabel _selectedIndex menyimpan indeks tab aktif; nilai 0 berarti Dashboard. Fungsi _onItemTapped menerima indeks dari tab yang ditekan, kemudian setState() memberi tahu Flutter untuk memperbarui tampilan sesuai nilai yang baru.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/2.png" alt="Tab Selection Logic" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>3. Menampilkan halaman dan tombol tambah transaksi (main_screen.dart)</strong></div>
+                            <p>IndexedStack menampilkan halaman berdasarkan _selectedIndex, dengan urutan Dashboard, Riwayat, lalu Profil. Callback onViewHistory memungkinkan Dashboard membuka tab Riwayat. Tombol FloatingActionButton hanya ditampilkan ketika tab Dashboard aktif. Saat tombol ditekan, Navigator.pushNamed() membuka halaman tambah transaksi melalui rute /add yang sudah didaftarkan.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/3.png" alt="IndexedStack and FAB" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>4. Membuat BottomNavigationBar (main_screen.dart)</strong></div>
+                            <p>BottomNavigationBar menyediakan tiga pilihan navigasi. currentIndex menandai tab yang sedang aktif, sedangkan onTap menjalankan fungsi _onItemTapped ketika pengguna memilih tab lain. Setiap BottomNavigationBarItem berisi ikon dan label yang mewakili halaman Beranda, Riwayat, dan Profil.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/4.png" alt="BottomNavigationBar Implementation" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>5. Memperbarui ringkasan Dashboard (dashboard_screen.dart)</strong></div>
+                            <p>TransactionStore.instance mengakses penyimpanan transaksi yang dipakai bersama oleh halaman aplikasi. AnimatedBuilder mendengarkan perubahan pada store dan membangun ulang tampilan ketika data berubah. Dashboard mengambil tiga transaksi terbaru, menampilkan nama serta email pengguna, dan menunjukkan saldo, total pemasukan, serta total pengeluaran. Fungsi formatRupiah() digunakan agar nominal tampil dalam format rupiah.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/5.png" alt="Dashboard Summary" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>6. Memvalidasi dan menyimpan transaksi (add_transaction_screen.dart)</strong></div>
+                            <p>Fungsi _saveTransaction() pertama-tama memeriksa validasi formulir. Jika input belum valid, proses dihentikan. Nilai nominal kemudian diubah menjadi angka dan dipakai untuk membentuk objek ExpenseTransaction yang menyimpan ID, nama transaksi, jumlah, kategori, tanggal, serta jenis transaksi. Objek ditambahkan ke TransactionStore, lalu Navigator.pop() menutup formulir dan kembali ke halaman sebelumnya.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/6.png" alt="Save Transaction Logic" class="report-screenshot">
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h4>Tugas</h4>
+                            
+                            <div class="report-substep-title"><strong>1. Validasi login dan menuju halaman utama (login_screen.dart)</strong></div>
+                            <p>Fungsi _login() memastikan formulir lolos validasi sebelum melanjutkan. Email yang dimasukkan disimpan melalui AuthService.login(). Setelah itu, aplikasi berpindah ke rute / yang merupakan MainScreen. pushNamedAndRemoveUntil() sekaligus menghapus halaman sebelumnya dari tumpukan navigasi sehingga tombol kembali tidak membawa pengguna ke halaman login.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/7.png" alt="Login Validation" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>2. Membuat input email dan password (login_screen.dart)</strong></div>
+                            <p>TextFormField pertama digunakan untuk memasukkan email dan memeriksa bahwa format sederhananya memuat karakter @ serta titik. TextFormField kedua menerima password; obscureText menyembunyikan karakter password saat diketik. Validator mengembalikan pesan kesalahan apabila input kosong atau tidak sesuai aturan. Pada implementasi praktikum ini, login masih simulasi dan belum memverifikasi kredensial ke server.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/8.png" alt="Login Form Fields" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>3. Menampilkan riwayat transaksi (history_screen.dart)</strong></div>
+                            <p>HistoryScreen membaca daftar transaksi dari TransactionStore. AnimatedBuilder membuat daftar diperbarui ketika store memberi notifikasi perubahan. Jika belum ada transaksi, aplikasi menampilkan pesan kosong. Jika data tersedia, ListView.separated membuat daftar dengan jarak antaritem; setiap transaksi ditampilkan melalui widget _HistoryTile.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/9.png" alt="History Screen" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>4. Menampilkan avatar, nama, email, dan tombol logout (profile_screen.dart)</strong></div>
+                            <p>Email diambil dari AuthService, sedangkan nama tampilan dibentuk dari bagian email sebelum tanda @. Huruf pertama nama digunakan sebagai avatar. Widget Text menampilkan nama dan email, sementara tombol Logout memunculkan dialog konfirmasi sebelum pengguna benar-benar keluar dari aplikasi.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/10.png" alt="Profile Screen" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>5. Menghapus sesi simulasi dan kembali ke login (main_screen.dart)</strong></div>
+                            <p>AuthService.logout() menghapus email pengguna dari sesi simulasi. Selanjutnya, aplikasi diarahkan ke rute /login dan seluruh halaman sebelumnya dihapus dari tumpukan navigasi. Dengan demikian, setelah logout pengguna kembali ke halaman login.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/11.png" alt="Logout Logic" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>6. Menghitung pemasukan, pengeluaran, saldo, dan menyimpan data (transaction_store.dart)</strong></div>
+                            <p>totalIncome menjumlahkan transaksi yang bertipe pemasukan, sedangkan totalExpense menjumlahkan transaksi yang bukan pemasukan. Saldo dihitung dari total pemasukan dikurangi total pengeluaran. Method add() memasukkan transaksi baru ke daftar dan memanggil notifyListeners() agar widget yang mendengarkan store, seperti Dashboard dan Riwayat, mengetahui bahwa data telah berubah.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/12.png" alt="Transaction Store Logic" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>7. Model data transaksi (expense_transaction.dart)</strong></div>
+                            <p>ExpenseTransaction merupakan model untuk merepresentasikan satu transaksi. Model menyimpan ID, nama, nominal, kategori, tanggal, dan status apakah transaksi berupa pemasukan. Kata required memastikan semua data tersebut harus diberikan ketika objek transaksi dibuat. Model membuat struktur data lebih konsisten saat digunakan pada Dashboard dan Riwayat.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/13.png" alt="Transaction Model" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>8. Memformat nominal rupiah (widgets/formatters.dart)</strong></div>
+                            <p>Fungsi formatRupiah() membulatkan nominal menjadi bilangan bulat, lalu mengubahnya menjadi teks. RegExp digunakan untuk menambahkan tanda titik setiap kelompok tiga digit sehingga nominal terlihat seperti Rp 1.500.000. Fungsi ini dipakai saat menampilkan nilai keuangan pada Dashboard dan daftar transaksi.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/14.png" alt="Format Rupiah Function" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>9. Hasil Akhir</strong></div>
+                            <p>Hasil akhir aplikasi Expense Tracker menampilkan seluruh fitur yang telah dikembangkan, mulai dari login, dashboard dengan ringkasan keuangan, penambahan transaksi, riwayat transaksi, hingga profil pengguna dengan fitur logout.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/15.png" alt="Hasil Akhir 1" class="report-screenshot">
+                            </div>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/16.png" alt="Hasil Akhir 2" class="report-screenshot">
+                            </div>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/17.png" alt="Hasil Akhir 3" class="report-screenshot">
+                            </div>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/18.png" alt="Hasil Akhir 4" class="report-screenshot">
+                            </div>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/19.png" alt="Hasil Akhir 5" class="report-screenshot">
+                            </div>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5/20.png" alt="Hasil Akhir 6" class="report-screenshot">
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Kesimpulan</h3>
+                            <p>Praktikum ini menunjukkan bahwa Named Routes dapat mengatur perpindahan halaman secara terpusat, sedangkan BottomNavigationBar memudahkan pengguna berpindah di antara Dashboard, Riwayat Transaksi, dan Profil. Formulir Login digunakan untuk menerima email pengguna, halaman tambah transaksi memasukkan data ke penyimpanan bersama, dan perubahan data ditampilkan kembali melalui Dashboard serta Riwayat. Pembuatan halaman Profil melengkapi fitur aplikasi dengan informasi pengguna dan logout. Namun, autentikasi masih berupa simulasi dan transaksi hanya disimpan di memori selama aplikasi berjalan, sehingga data belum tersimpan secara permanen setelah aplikasi dihentikan.</p>
+                            <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                                <a href="../report.html" class="report-github-button">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span>Kembali ke Report</span>
+                                </a>
+                                <a href="https://github.com/Alramadhanny/Praktikum_Aplikasi-Mobile_A_Abdullah-Al-Ramadhani_2411533016/tree/praktikum5" class="report-github-button" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    <span>Lihat di GitHub</span>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

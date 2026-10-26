@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 5 PROJECT: Expense Tracker dengan SQLite - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 5 PROJECT: Expense Tracker dengan SQLite</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-expense-tracker-project" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 5 PROJECT: Expense Tracker dengan SQLite</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Aplikasi mobile membutuhkan navigasi yang terstruktur agar pengguna dapat berpindah dari satu halaman ke halaman lain dengan mudah. Pada Flutter, perpindahan halaman dapat diatur menggunakan Named Routes, sedangkan BottomNavigationBar menyediakan menu untuk mengakses halaman utama. Pengelolaan state diperlukan agar tampilan dapat diperbarui setelah pengguna memilih menu atau melakukan perubahan data.</p>
+                            <p>Source code pada file ZIP membentuk aplikasi Expense Tracker yang terdiri dari halaman splash, login, registrasi, dashboard, tambah transaksi, riwayat transaksi, dan profil. Proyek menggunakan SQLite melalui paket sqflite untuk menyimpan data pengguna dan transaksi secara lokal. Layanan AuthService mengatur proses registrasi, login, sesi pengguna, dan logout, sedangkan Dashboard dan Riwayat mengambil data dari database untuk ditampilkan kepada pengguna.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami penerapan Named Routes untuk menghubungkan halaman-halaman pada aplikasi Flutter.</li>
+                                <li>Menerapkan BottomNavigationBar untuk berpindah antara Dashboard, Riwayat Transaksi, dan Profil.</li>
+                                <li>Membuat halaman splash, login, dan registrasi dengan validasi input pengguna.</li>
+                                <li>Memahami penggunaan SQLite untuk menyimpan data pengguna dan transaksi secara lokal.</li>
+                                <li>Menerapkan operasi tambah dan baca transaksi serta perhitungan pemasukan, pengeluaran, dan saldo.</li>
+                                <li>Memahami pengelolaan sesi login serta proses logout pengguna.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Isi</h3>
+                            
+                            <div class="report-substep-title"><strong>1. Menjalankan aplikasi dan mengatur Named Routes (lib/main.dart)</strong></div>
+                            <p>Fungsi main() menjadi titik awal aplikasi. WidgetsFlutterBinding.ensureInitialized() memastikan binding Flutter siap sebelum proses inisialisasi yang diperlukan. runApp() menjalankan widget utama ExpenseTrackerApp. Di dalam MaterialApp, initialRoute: '/splash' menentukan halaman pertama yang dibuka, sedangkan routes mendaftarkan nama rute beserta widget halaman tujuan. Pendaftaran ini membuat navigasi dapat dipanggil memakai nama rute seperti /login, /main, dan /add.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/1.png" alt="Main.dart - Named Routes Configuration" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>2. Membuat model data pengguna dan transaksi (lib/database_helper.dart)</strong></div>
+                            <p>Kelas User merepresentasikan data akun, seperti nama, email, nomor telepon, password, waktu pembuatan akun, dan login terakhir. Kelas ExpenseTransaction merepresentasikan transaksi keuangan. userId menghubungkan transaksi dengan pemiliknya, amount menyimpan nominal, category menyimpan kategori transaksi, sedangkan isIncome membedakan pemasukan (true) dan pengeluaran (false). Tipe final menandakan nilai properti tidak diubah setelah objek dibuat.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/2.png" alt="User and ExpenseTransaction Models" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>3. Menginisialisasi database SQLite (lib/database_helper.dart)</strong></div>
+                            <p>getDatabasesPath() mengambil lokasi penyimpanan database lokal, lalu join() membentuk lokasi file bernama expense_tracker.db. openDatabase() membuka atau membuat database. Callback onCreate dijalankan saat database pertama kali dibuat. Tabel users menyimpan data akun dan memberi batas UNIQUE pada email agar satu alamat email tidak terdaftar lebih dari sekali. Pada file sumber, tabel transactions juga dibuat untuk menyimpan transaksi, termasuk user_id, judul, nominal, kategori, tanggal, jenis transaksi, serta waktu pencatatan.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/3.png" alt="Database Initialization" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>4. Mengelola database sebagai satu instance (lib/database_helper.dart)</strong></div>
+                            <p>Pola singleton membuat pemanggilan DatabaseHelper() menggunakan satu instance bersama, bukan membuat objek helper baru setiap kali. Getter database memeriksa apakah database sudah dibuka. Jika sudah, objek yang tersimpan dikembalikan; jika belum, _initDatabase() dipanggil untuk menginisialisasikannya. Pola ini membantu mengelola akses database secara terpusat.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/4.png" alt="Singleton Pattern" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>5. Menyimpan transaksi ke database (lib/database_helper.dart)</strong></div>
+                            <p>Method insertTransaction() menerima objek transaksi, mengambil koneksi database, lalu menyimpan data ke tabel transactions. toMap() mengubah objek menjadi pasangan nama kolom dan nilai yang dapat disimpan SQLite. ID hasil penyimpanan dimasukkan kembali ke objek melalui copyWith(), sehingga transaksi yang dikembalikan memiliki ID database.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/5.png" alt="Insert Transaction Method" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>6. Menyiapkan navigasi tab utama (lib/screens/main_screen.dart)</strong></div>
+                            <p>_selectedIndex menyimpan indeks tab yang aktif. Method _onItemTapped() memanggil setState() agar Flutter membangun ulang tampilan sesuai pilihan tab. IndexedStack menampung Dashboard, Riwayat Transaksi, dan Profil serta menampilkan anak berdasarkan indeks yang dipilih. Callback onViewHistory mengarahkan pengguna dari Dashboard ke tab Riwayat. Key pada Dashboard dan Riwayat juga dapat diperbarui ketika transaksi baru ditambahkan agar datanya dimuat ulang.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/6.png" alt="Main Screen Navigation" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>7. Menampilkan ringkasan keuangan (lib/screens/dashboard_screen.dart)</strong></div>
+                            <p>Dashboard mengambil transaksi milik pengguna yang sedang login, lalu meminta total pemasukan, total pengeluaran, dan saldo dari DatabaseHelper. transactions.take(3) membatasi daftar pada tiga transaksi terbaru. setState() memperbarui variabel tampilan setelah data diperoleh, sedangkan mounted memastikan widget masih aktif sebelum perubahan state dilakukan. Nilai-nilai ini kemudian dipakai untuk menampilkan ringkasan keuangan.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/7.png" alt="Dashboard Financial Summary" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>8. Menghitung pemasukan, pengeluaran, dan saldo (lib/database_helper.dart)</strong></div>
+                            <p>getBalance() memperoleh total pemasukan dan total pengeluaran berdasarkan ID pengguna, lalu menghitung saldo dengan rumus pemasukan dikurangi pengeluaran. Method ini mengembalikan nilai double sehingga dapat menampung nominal dengan angka desimal. Kedua total dihitung dari catatan transaksi yang tersimpan di database.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/8.png" alt="Balance Calculation" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>9. Menyimpan transaksi melalui formulir (lib/screens/add_transaction_screen.dart)</strong></div>
+                            <p>Nominal dari kolom input dibersihkan dan diubah menjadi double. Aplikasi lalu membentuk objek ExpenseTransaction yang berisi ID pengguna, judul, nominal, kategori, tanggal, jenis transaksi, dan waktu pencatatan. Objek disimpan melalui insertTransaction(). Setelah berhasil, Navigator.pop(context, true) menutup halaman input dan mengembalikan nilai true kepada halaman sebelumnya sebagai tanda bahwa data baru ditambahkan.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/9.png" alt="Add Transaction Form" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>10. Memeriksa sesi saat aplikasi dibuka (lib/screens/splash_screen.dart)</strong></div>
+                            <p>Splash screen menunggu animasi awal dan pemeriksaan sesi login berjalan. AuthService().initialize() memeriksa data sesi yang tersimpan. Jika pengguna masih memiliki sesi yang valid, aplikasi mengganti halaman ke /main; jika tidak, aplikasi diarahkan ke /login. pushReplacementNamed() mengganti halaman splash sehingga pengguna tidak kembali ke splash ketika menekan tombol kembali.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/10.png" alt="Splash Screen Session Check" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>11. Memvalidasi dan menjalankan login (lib/screens/login_screen.dart)</strong></div>
+                            <p>Form divalidasi sebelum proses login dilakukan. Jika input tidak valid, fungsi dihentikan. Saat proses berlangsung, _isLoading diubah menjadi true untuk menandai bahwa aplikasi sedang memproses permintaan. Email dan password dikirim ke AuthService. Jika hasil login menyatakan berhasil, pengguna diarahkan ke /main dan rute sebelumnya dihapus dari tumpukan navigasi. Kode lengkap juga menampilkan pesan melalui SnackBar ketika login berhasil atau gagal.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/11.png" alt="Login Validation" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>12. Memproses registrasi akun (lib/screens/register_screen.dart)</strong></div>
+                            <p>Form registrasi memvalidasi semua masukan terlebih dahulu. Data nama, email, nomor telepon, dan password kemudian dikirim ke AuthService.register(). Status loading diperbarui selama proses berlangsung. Jika registrasi berhasil, pengguna langsung masuk ke halaman utama. Pada kode lengkap, pesan SnackBar juga ditampilkan untuk memberi tahu hasil proses registrasi.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/12.png" alt="Register Form" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>13. Memeriksa data akun dan menyimpan sesi (lib/services/auth_service.dart)</strong></div>
+                            <p>AuthService meminta DatabaseHelper memverifikasi email dan password. Jika akun tidak ditemukan atau kredensial tidak cocok, hasilnya menyatakan login gagal. Jika cocok, waktu login terakhir diperbarui, sesi disimpan, dan objek pengguna ditetapkan sebagai _currentUser. Data pengguna aktif ini digunakan oleh Dashboard dan Profil. Pada operasi registrasi, layanan juga memeriksa format email, nomor telepon, panjang password, serta email yang sudah terdaftar.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/13.png" alt="Auth Service Login Logic" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>14. Mengamankan penyimpanan password (lib/database_helper.dart)</strong></div>
+                            <p>Fungsi _hashPassword() mengubah password menjadi byte UTF-8, lalu menghitung hash SHA-256 dan mengembalikan hasilnya sebagai teks. Pada proses simpan akun, nilai hash digunakan untuk menggantikan password asli di database. Saat login, hash dari password yang dimasukkan dibandingkan dengan hash yang tersimpan. Hash bukan enkripsi yang dapat dibalik, tetapi untuk sistem produksi sebaiknya digunakan skema penyimpanan password yang dirancang khusus seperti Argon2id, scrypt, atau bcrypt dengan salt.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/14.png" alt="Password Hashing" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>15. Menampilkan daftar Riwayat Transaksi (lib/screens/history_screen.dart)</strong></div>
+                            <p>Halaman riwayat mengaktifkan status loading lalu mengambil ID pengguna aktif. Jika ID tersedia, daftar transaksi pengguna tersebut dibaca dari database. Hasilnya disimpan ke _transactions dan ditampilkan dalam daftar. Jika belum ada data, layar menampilkan pesan bahwa riwayat masih kosong. RefreshIndicator memungkinkan pengguna menarik layar ke bawah untuk memuat data terbaru.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/15.png" alt="History Screen" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>16. Menampilkan Profil dan mengonfirmasi logout (lib/screens/profile_screen.dart)</strong></div>
+                            <p>Profil mengambil data pengguna yang sedang aktif melalui AuthService. Jika data tidak tersedia, aplikasi menampilkan pesan. Jika tersedia, nama, email, dan nomor telepon dipakai untuk mengisi informasi profil. Huruf pertama nama digunakan sebagai avatar berbentuk lingkaran. Tombol logout pada layar ini menampilkan dialog konfirmasi sebelum memanggil callback onLogout.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/16.png" alt="Profile Screen" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>17. Menghapus sesi ketika logout (lib/services/auth_service.dart)</strong></div>
+                            <p>SharedPreferences digunakan untuk menyimpan informasi sesi sederhana. Saat logout, ID pengguna dihapus, penanda is_logged_in diatur menjadi false, lalu _currentUser dikosongkan. MainScreen selanjutnya mengarahkan pengguna kembali ke halaman login dan menghapus rute sebelumnya agar halaman utama tidak tetap berada di tumpukan navigasi.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/17.png" alt="Logout Logic" class="report-screenshot">
+                            </div>
+
+                            <div class="report-substep-title"><strong>18. Memformat nominal dan tanggal (lib/widgets/formatters.dart)</strong></div>
+                            <p>formatRupiah() membulatkan nominal dan menambahkan tanda titik sebagai pemisah ribuan, kemudian memberi awalan Rp. formatDate() menampilkan tanggal dengan urutan hari/bulan/tahun serta menambahkan nol di depan hari atau bulan jika nilainya hanya satu digit. Fungsi formatter dipakai agar nominal dan tanggal pada Dashboard, Riwayat, atau Profil tampil konsisten.</p>
+                            <div class="report-image-container">
+                                <img src="../images/aplikasi_mobile_laprak5_project/18.png" alt="Format Functions" class="report-screenshot">
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Kesimpulan</h3>
+                            <p>Aplikasi Expense Tracker menerapkan Named Routes dan BottomNavigationBar untuk menghubungkan halaman splash, login, registrasi, Dashboard, Riwayat, Profil, serta form transaksi. Data pengguna dan transaksi disimpan di SQLite, sementara AuthService mengelola autentikasi dan sesi. Dashboard menghitung pemasukan, pengeluaran, dan saldo. Source code menggunakan hash SHA-256 langsung untuk password; untuk penggunaan produksi, sebaiknya gunakan algoritma password hashing khusus dengan salt.</p>
+                            <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                                <a href="../report.html" class="report-github-button">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span>Kembali ke Report</span>
+                                </a>
+                                <a href="https://github.com/Alramadhanny/Praktikum_Aplikasi-Mobile_A_Abdullah-Al-Ramadhani_2411533016/tree/praktikum5" class="report-github-button" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    <span>Lihat di GitHub</span>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
