@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 6: State Management dengan Provider - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    
+    /* Report image style */
+    .report-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        margin: 20px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 6: State Management dengan Provider</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-provider-state-management" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 6: State Management dengan Provider</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Pengembangan aplikasi mobile modern menggunakan Flutter memerlukan pengaturan state yang rapi agar tampilan aplikasi dapat berubah secara otomatis ketika data berubah. Di Flutter, state umumnya dibagi menjadi dua jenis, yaitu ephemeral state (state lokal) dan app state (state global). State lokal biasanya ditangani dengan method setState() dan cocok untuk data sementara yang hanya digunakan di satu widget. Akan tetapi, jika data harus dipakai atau diperbarui di beberapa halaman, penggunaan state lokal menjadi tidak praktis dan kurang efisien.</p>
+                            <p>Untuk mengatasi masalah tersebut, praktikum ini menerapkan app state menggunakan paket Provider dengan pola ChangeNotifier pada aplikasi ResepKu. Melalui praktikum ini, dilakukan pembelajaran tentang cara mengelola state global, khususnya untuk menyimpan daftar resep favorit dan pengaturan tema aplikasi. Selain itu, praktikum ini juga menekankan pentingnya memahami struktur widget tree serta meletakkan provider pada posisi yang tepat, agar data dapat diakses dari semua halaman tanpa menimbulkan error ProviderNotFoundException.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami perbedaan utama antara ephemeral state (state lokal) dan app state (state global), serta mengetahui kapan masing-masing jenis state sebaiknya digunakan di Flutter.</li>
+                                <li>Menerapkan penyimpanan data secara terpusat dengan Provider dan ChangeNotifier untuk fitur daftar resep favorit pada aplikasi ResepKu.</li>
+                                <li>Menganalisis bagaimana letak ChangeNotifierProvider dalam widget tree memengaruhi kemampuan BuildContext untuk mengakses data saat berpindah antarhalaman.</li>
+                                <li>Membuat fitur penggantian tema aplikasi secara keseluruhan menggunakan ThemeProvider yang terhubung langsung dengan MaterialApp.</li>
+                                <li>Mengembangkan tampilan aplikasi yang responsif terhadap perubahan data, seperti perubahan ikon favorit, pembaruan angka pada badge secara langsung, serta fitur menghapus semua resep favorit dengan dialog konfirmasi terlebih dahulu.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Isi</h3>
+                            
+                            <h4>Bagian A — Menyiapkan ResepKu dan State Lokal</h4>
+                            
+                            <h5>1. Membuat Project</h5>
+                            <p>Buka terminal di folder kerja, lalu jalankan:</p>
+                            <pre><code>flutter create resepku</code></pre>
+                            <p>Buka folder resepku di VS Code. Kemudian, buat lima folder baru di dalam folder lib/, yaitu models, data, providers, pages, dan widgets. Pada akhir modul, susunan folder di dalam lib/ akan terlihat seperti berikut:</p>
+                            <img src="../images/aplikasi_mobile_laprak6/1.png" alt="Struktur Folder Proyek ResepKu" class="report-image">
+
+                            <h5>2. Membuat Model Recipe</h5>
+                            <p>Buka file lib/models/recipe.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini berisi pembuatan class Recipe pada file lib/models/recipe.dart. Class tersebut berfungsi sebagai cetakan atau rancangan data resep makanan, yang memiliki beberapa properti seperti ID, nama resep, tingkat kesulitan, jumlah kalori, dan daftar bahan. Class ini memakai constructor konstan dengan nilai wajib agar semua data harus terisi ketika objek resep dibuat. Selain itu, terdapat getter totalTimeMinutes yang otomatis menghitung waktu memasak total dengan menambahkan prepTimeMinutes dan cookTimeMinutes.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/2.png" alt="Kode Model Recipe" class="report-image">
+
+                            <h5>3. Menambahkan Data Dummy</h5>
+                            <p>Buka file lib/data/dummy_recipes.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat variabel konstan dummyRecipes, yaitu daftar data contoh yang berisi enam objek Recipe. Setiap data resep dilengkapi dengan informasi seperti nama resep, asal kuliner, tingkat kesulitan, waktu pembuatan, jumlah kalori, rating, dan daftar bahan. Data contoh ini digunakan sebagai data awal yang ditampilkan pada aplikasi ResepKu sebelum nantinya diganti dengan data dari API pada modul berikutnya.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/3.png" alt="Kode Dummy Data" class="report-image">
+
+                            <h5>4. Halaman Home dan RecipeTile</h5>
+                            <p>Buka file lib/widgets/identity_footer.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat widget IdentityFooter, yaitu widget yang digunakan untuk menampilkan baris identitas berisi NIM dan nama mahasiswa pada bagian bawah layar. Widget ini memakai Column dan Expanded untuk menyusun konten utama aplikasi, serta menggunakan MediaQuery.removePadding dan SafeArea agar informasi identitas tetap terlihat dengan baik dan tidak terpotong oleh elemen sistem perangkat pada setiap halaman.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/4.png" alt="Kode Identity Footer" class="report-image">
+
+                            <p>File lib/main.dart (versi awal).</p>
+                            <p><strong>Penjelasan:</strong> Kode ini merupakan titik awal atau entry point aplikasi ResepKu yang menjalankan widget ResepKuApp melalui konfigurasi MaterialApp. Pada kode ini, warna utama aplikasi diatur menggunakan deepOrange, banner debug disembunyikan, dan HomePage ditetapkan sebagai halaman pertama yang muncul saat aplikasi dibuka. Selain itu, parameter builder digunakan untuk membungkus seluruh navigasi aplikasi dengan IdentityFooter, sehingga NIM dan nama mahasiswa selalu tampil di bagian bawah setiap halaman.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/5.png" alt="Kode Main.dart Awal" class="report-image">
+
+                            <p>File lib/pages/home_page.dart (versi awal).</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat widget HomePage yang berbasis StatelessWidget sebagai tampilan halaman utama aplikasi ResepKu. Halaman ini menggunakan Scaffold dengan AppBar bertuliskan "ResepKu". Pada bagian body, terdapat ListView yang menampilkan seluruh data resep dari dummyRecipes secara berurutan menggunakan widget RecipeTile.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/6.png" alt="Kode HomePage Awal" class="report-image">
+
+                            <p>File lib/widgets/recipe_tile.dart (versi awal).</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat widget RecipeTile berbasis StatelessWidget untuk menampilkan satu data resep dalam daftar menggunakan ListTile. Widget ini menampilkan huruf awal nama resep pada CircleAvatar, nama resep sebagai judul, serta subjudul yang berisi jenis kuliner, total waktu memasak, dan rating resep. Selain itu, saat item resep ditekan, event onTap akan memindahkan pengguna ke halaman DetailPage menggunakan Navigator.push sambil membawa data resep yang dipilih.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/7.png" alt="Kode RecipeTile Awal" class="report-image">
+
+                            <h5>5. Halaman Detail dengan setState()</h5>
+                            <p>Buka file lib/pages/detail_page.dart (versi awal), lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat halaman detail resep berbasis StatefulWidget yang menggunakan state lokal untuk mengatur perubahan jumlah porsi secara langsung. Nilai awal porsi diambil dari data resep melalui initState(). Ketika tombol tambah atau kurangi porsi ditekan, nilai _servings akan berubah, sehingga total kalori juga dihitung ulang secara otomatis. Halaman ini juga menampilkan informasi resep, seperti jenis kuliner, tingkat kesulitan, total waktu memasak, dan daftar bahan menggunakan ListView.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/8.png" alt="Kode DetailPage dengan setState" class="report-image">
+
+                            <h5>6. Checkpoint 1</h5>
+                            <p>Tampilan Checkpoint 1 Bagian A menunjukkan halaman utama ResepKu yang berhasil menampilkan daftar resep makanan, serta halaman detail yang menggunakan state lokal setState() untuk mengatur jumlah porsi dan menghitung total kalori secara langsung. Ketika jumlah porsi diubah, total kalori ikut diperbarui otomatis, misalnya 4 porsi menjadi 1.200 kkal dan 1 porsi menjadi 300 kkal. Tombol pengurang porsi (-) juga otomatis tidak dapat ditekan ketika jumlah porsi sudah berada pada batas minimum, yaitu 1. Selain itu, footer identitas yang berisi NIM 2411533016 dan nama Abdullah Al Ramadhani tampil secara konsisten di bagian bawah seluruh halaman.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/9.png" alt="Checkpoint 1 - Halaman Home" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/10.png" alt="Checkpoint 1 - Halaman Detail dengan setState" class="report-image">
+
+                            <h4>Bagian B — Favorit dengan State Lokal</h4>
+                            
+                            <h5>1. Mengganti RecipeTile</h5>
+                            <p>Ganti seluruh isi recipe_tile.dart dengan versi eksperimen berikut.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini mengubah RecipeTile menjadi StatefulWidget agar setiap item resep dapat menyimpan status favoritnya sendiri melalui variabel _isFavorite. Ketika ikon hati ditekan, setState() dipanggil untuk mengubah nilai _isFavorite, sehingga bentuk dan warna ikon berubah hanya pada tile yang ditekan. Percobaan ini bertujuan menunjukkan keterbatasan state lokal, yaitu data favorit yang tersimpan di setiap tile tidak dapat diakses atau dibagikan ke widget lain, seperti badge jumlah favorit di HomePage maupun ikon favorit pada DetailPage.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/11.png" alt="Kode RecipeTile dengan State Lokal" class="report-image">
+
+                            <h5>2. Mengamati Hasilnya</h5>
+                            <p>Lakukan hot reload. Tap ikon hati pada dua resep.</p>
+                            
+                            <p><strong>Pertanyaan 1:</strong> Apakah ikon hati berubah? Mengapa?</p>
+                            <p><strong>Jawaban:</strong> Ya, ikon hati berubah bentuk dan warna ketika ditekan. Hal ini terjadi karena RecipeTile menggunakan StatefulWidget, lalu pemanggilan setState() pada tombol membuat widget tersebut dibangun ulang secara lokal, sehingga nilai _isFavorite ikut diperbarui.</p>
+
+                            <p><strong>Pertanyaan 2:</strong> Coba tampilkan jumlah resep favorit di judul AppBar HomePage. Apakah hal itu dapat dilakukan? Di class mana data _isFavorite berada, dan apakah HomePage dapat membacanya?</p>
+                            <p><strong>Jawaban:</strong> Tidak dapat dilakukan secara langsung. Variabel _isFavorite berada di dalam class _RecipeTileState yang bersifat private dan hanya tersimpan pada masing-masing tile. Karena itu, HomePage tidak memiliki akses untuk membaca atau menghitung total nilai _isFavorite dari semua tile.</p>
+
+                            <p><strong>Pertanyaan 3:</strong> Buka halaman detail dari resep yang sudah difavoritkan. Bagaimana halaman detail dapat mengetahui bahwa resep tersebut favorit?</p>
+                            <p><strong>Jawaban:</strong> Halaman DetailPage tidak dapat mengetahui status favorit resep tersebut. Hal ini terjadi karena _isFavorite hanya disimpan secara lokal di _RecipeTileState. Saat berpindah ke DetailPage, data yang dikirimkan hanya objek Recipe dan tidak menyertakan informasi status favorit dari RecipeTile.</p>
+
+                            <h4>Bagian C — Fitur Favorit dengan Provider</h4>
+                            
+                            <h5>1. Memasang Provider dan Membuat FavoriteProvider</h5>
+                            <p>Ketik ini pada terminal, lalu run:</p>
+                            <pre><code>flutter pub add provider</code></pre>
+                            <p>Perintah ini digunakan untuk menambahkan paket provider ke dalam file pubspec.yaml dan mengunduhnya ke dalam proyek. Setelah itu, dibuat class untuk mengelola state global:</p>
+                            
+                            <p>Buka file lib/providers/favorite_provider.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat class FavoriteProvider yang mewarisi ChangeNotifier untuk mengatur daftar resep favorit secara global di seluruh aplikasi. Daftar favorit disimpan secara private agar datanya lebih aman. Class ini juga menyediakan fungsi isFavorite untuk memeriksa apakah sebuah resep sudah difavoritkan, fungsi toggle untuk menambah atau menghapus resep dari daftar favorit, serta fungsi clear untuk menghapus semua favorit. Setiap kali daftar favorit berubah, notifyListeners() dipanggil agar widget yang menggunakan provider ini, seperti badge jumlah favorit di AppBar, ikon favorit di halaman detail, dan daftar di halaman favorit, ikut diperbarui secara otomatis.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/12.png" alt="Kode FavoriteProvider" class="report-image">
+
+                            <h5>2. Memasang Provider di Atas MaterialApp</h5>
+                            <p>Buka file lib/main.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini memperbarui titik awal aplikasi dengan menambahkan FavoriteProvider ke dalam MultiProvider pada posisi paling atas, yaitu sebelum MaterialApp. Penempatan ini membuat data favorit dapat diakses dari semua halaman dalam aplikasi. Dengan begitu, setiap perubahan pada daftar favorit dapat dipantau oleh widget mana pun di dalam aplikasi. Konfigurasi utama tetap dipertahankan, seperti warna tema deepOrange, HomePage sebagai halaman pembuka, dan penggunaan IdentityFooter untuk menampilkan NIM serta nama mahasiswa di bagian bawah setiap halaman.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/13.png" alt="Kode Main.dart dengan MultiProvider" class="report-image">
+
+                            <h5>3. RecipeTile Membaca Data dari Provider</h5>
+                            <p>Buka file lib/widgets/recipe_tile.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini mengubah RecipeTile kembali menjadi StatelessWidget yang terhubung dengan FavoriteProvider untuk membaca data favorit global. Pada method build(), context.watch&lt;FavoriteProvider&gt;() digunakan agar tampilan ikon hati otomatis berubah ketika status favorit resep berubah. Sementara itu, context.read&lt;FavoriteProvider&gt;() dipakai di dalam onPressed untuk menjalankan fungsi toggle() tanpa perlu terus-menerus memantau perubahan data. Widget ini tetap menampilkan nama resep, jenis kuliner, waktu memasak, dan rating, serta mengarahkan pengguna ke DetailPage ketika item resep ditekan.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/14.png" alt="Kode RecipeTile dengan Provider" class="report-image">
+
+                            <h5>4. Tombol Favorit di Halaman Detail</h5>
+                            <p>Hasil akhir detail_page.dart.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini memperbarui halaman detail resep dengan menggabungkan dua jenis state management sekaligus, yaitu state lokal dan state global. State lokal _servings digunakan untuk mengelola jumlah porsi dan kalkulasi total kalori secara dinamis saat tombol pengubah porsi ditekan, sedangkan state global diakses melalui FavoriteProvider menggunakan context.watch untuk memantau status ikon favorit pada AppBar secara real time serta context.read untuk memicu method toggle() saat ikon hati ditekan.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/15.png" alt="Kode DetailPage dengan Provider" class="report-image">
+
+                            <h5>5. Halaman Favorit</h5>
+                            <p>Buka file lib/pages/favorite_page.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat halaman Favorit Saya berbasis StatelessWidget yang menggunakan Consumer&lt;FavoriteProvider&gt; untuk memantau perubahan daftar resep favorit secara langsung. Jika belum ada resep favorit, halaman menampilkan pesan petunjuk di tengah layar. Namun, jika sudah ada resep favorit, daftar tersebut ditampilkan menggunakan ListView dan ListTile. Setiap item dilengkapi tombol hapus yang memanggil fungsi favorite.toggle(recipe) untuk mengeluarkan resep dari daftar favorit.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/16.png" alt="Kode FavoritePage" class="report-image">
+
+                            <h5>6. Badge Jumlah Favorit di AppBar</h5>
+                            <p>Buka file lib/widgets/favorite_badge_button.dart, lalu isi dengan kode seperti ini.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat widget FavoriteBadgeButton berbasis StatelessWidget yang menampilkan tombol ikon favorit beserta badge jumlah favorit di atasnya. Widget ini memakai context.watch&lt;FavoriteProvider&gt;() untuk memantau jumlah resep favorit secara real time. Badge akan menampilkan angka dan otomatis diperbarui hanya jika jumlah favorit lebih dari nol. Ketika tombol ditekan, fungsi onPressed akan membawa pengguna ke halaman FavoritePage menggunakan Navigator.push.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/17.png" alt="Kode FavoriteBadgeButton" class="report-image">
+
+                            <p>Pasang widget tersebut di AppBar HomePage. Isi akhir home_page.dart seperti ini.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/18.png" alt="Kode HomePage dengan Badge" class="report-image">
+
+                            <h5>7. Checkpoint 2</h5>
+                            <img src="../images/aplikasi_mobile_laprak6/19.png" alt="Checkpoint 2 - Fitur Favorit Berfungsi" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/20.png" alt="Checkpoint 2 - Badge Jumlah Favorit" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/21.png" alt="Checkpoint 2 - Halaman Favorit" class="report-image">
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Pertanyaan Analisis</h3>
+                            
+                            <h4>1. Tuliskan jawaban tiga pertanyaan pada Langkah B.2, lengkap dengan alasannya!</h4>
+                            <p>Ikon hati pada RecipeTile dapat berubah menjadi merah dan berubah bentuk ketika ditekan karena widget tersebut menggunakan StatefulWidget yang memanggil setState() secara lokal. Namun, jumlah favorit tidak bisa ditampilkan pada AppBar HomePage karena variabel _isFavorite hanya tersimpan di dalam class _RecipeTileState dan tidak dapat diakses oleh HomePage. Keterbatasan ini juga membuat DetailPage tidak mengetahui apakah sebuah resep sudah difavoritkan, karena saat berpindah halaman hanya objek Recipe yang dikirim, tanpa membawa data _isFavorite dari RecipeTile.</p>
+
+                            <h4>2. Mengapa jumlah porsi tetap menggunakan setState() dan tidak dimasukkan ke Provider?</h4>
+                            <p>Jumlah porsi tetap menggunakan setState() karena data tersebut merupakan ephemeral state atau state lokal yang hanya diperlukan sementara di DetailPage dan tidak digunakan oleh halaman atau widget lain. Hal ini sesuai dengan hasil percobaan pada skenario 6 Langkah C.7, di mana setelah pengguna mengubah jumlah porsi lalu kembali ke HomePage, widget DetailPage beserta state lokal _servings akan dihapus dari memori. Oleh karena itu, saat resep dibuka kembali, jumlah porsi kembali ke nilai awal. Perilaku ini sudah sesuai dengan kebutuhan aplikasi, sehingga data porsi tidak perlu disimpan dalam Provider, yang memang digunakan untuk app state global yang harus tetap tersedia di beberapa halaman.</p>
+
+                            <h4>3. Pindahkan ChangeNotifierProvider dari main() ke dalam HomePage (membungkus Scaffold). Apa yang terjadi?</h4>
+                            <p>Ketika ChangeNotifierProvider dipindahkan dari main() ke dalam HomePage untuk membungkus Scaffold, aplikasi menampilkan error ProviderNotFoundException saat halaman Favorit Saya dibuka. Hal ini terjadi karena Navigator.push membuka FavoritePage sebagai route baru yang berada di luar cabang widget tree milik HomePage. Karena FavoriteProvider hanya dideklarasikan di dalam HomePage, halaman FavoritePage tidak dapat mengakses provider tersebut melalui BuildContext-nya.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/22.png" alt="Error ProviderNotFoundException" class="report-image">
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>E. Latihan</h3>
+                            
+                            <h4>Latihan 1 — Tema Gelap dan Terang</h4>
+                            <p>Tambahkan halaman Pengaturan yang berisi SwitchListTile "Mode gelap". Ketika switch diaktifkan, seluruh aplikasi berubah ke tema gelap.</p>
+                            
+                            <h5>1. Membuat ThemeProvider</h5>
+                            <p>Buat lib/providers/theme_provider.dart berisi class ThemeProvider yang meng-extend ChangeNotifier, dengan field ThemeMode, getter, dan satu method untuk mengubahnya.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat class ThemeProvider yang mewarisi ChangeNotifier untuk mengatur tema aplikasi secara global, yaitu mode terang dan gelap. Status tema disimpan dalam variabel privat _themeMode yang secara awal bernilai ThemeMode.light. Class ini juga memiliki getter themeMode dan isDarkMode untuk membaca tema yang sedang aktif. Ketika fungsi toggleTheme() dipanggil melalui tombol switch, nilai _themeMode akan berubah dan notifyListeners() memberi tahu semua widget yang menggunakan provider ini, sehingga tampilan aplikasi langsung berubah antara mode terang dan gelap secara otomatis.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/23.png" alt="Kode ThemeProvider" class="report-image">
+
+                            <h5>2. Mendaftarkan ThemeProvider</h5>
+                            <p>Daftarkan ThemeProvider di dalam MultiProvider pada main.dart. Di MaterialApp, tambahkan darkTheme dan themeMode yang dibaca dari ThemeProvider.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/24.png" alt="Kode Main.dart dengan ThemeProvider" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/25.png" alt="Kode Main.dart dengan ThemeProvider (lanjutan)" class="report-image">
+
+                            <h5>3. Membuat Halaman Pengaturan</h5>
+                            <p>Buat lib/pages/settings_page.dart yang berisi SwitchListTile, lalu tambahkan tombol ikon pengaturan di AppBar HomePage.</p>
+                            <p><strong>Penjelasan:</strong> Kode ini membuat halaman SettingsPage berbasis StatelessWidget yang menggunakan SwitchListTile agar pengguna dapat mengaktifkan atau menonaktifkan mode gelap. Halaman ini memakai context.watch&lt;ThemeProvider&gt;() untuk memantau nilai isDarkMode secara langsung, sehingga posisi switch selalu sesuai dengan tema yang sedang digunakan. Selain itu, context.read&lt;ThemeProvider&gt;().toggleTheme(value) dipanggil pada onChanged untuk mengubah tema seluruh aplikasi menjadi gelap atau terang ketika switch digeser.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/26.png" alt="Kode SettingsPage" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/27.png" alt="Kode HomePage dengan tombol Settings" class="report-image">
+
+                            <h5>4. Output Latihan 1</h5>
+                            <img src="../images/aplikasi_mobile_laprak6/28.png" alt="Aplikasi Mode Terang" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/29.png" alt="Halaman Pengaturan" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/30.png" alt="Aplikasi Mode Gelap" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/31.png" alt="Halaman Home Mode Gelap" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/32.png" alt="Halaman Detail Mode Gelap" class="report-image">
+
+                            <h4>Latihan 2 — Menghapus Semua Favorit</h4>
+                            
+                            <h5>1. Memastikan FavoriteProvider Memiliki Method clear()</h5>
+                            <p>Buka file lib/providers/favorite_provider.dart.</p>
+                            <p><strong>Penjelasan:</strong> Method clear() digunakan untuk menghapus seluruh data resep favorit yang tersimpan di dalam _items. Setelah data dihapus, notifyListeners() dipanggil agar seluruh widget yang menggunakan FavoriteProvider mengetahui perubahan tersebut dan memperbarui tampilannya.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/33.png" alt="Method clear() di FavoriteProvider" class="report-image">
+
+                            <h5>2. Mengubah FavoritePage</h5>
+                            <p>Ganti seluruh isi file favorite_page.dart dengan kode berikut.</p>
+                            <p><strong>Penjelasan:</strong> Kode FavoritePage menambahkan tombol Hapus semua pada AppBar yang menampilkan AlertDialog sebagai konfirmasi sebelum menghapus seluruh resep favorit. Jika pengguna memilih Hapus semua, method clear() akan dijalankan, sedangkan jika memilih Batal, data tetap dipertahankan. Tombol juga otomatis menjadi nonaktif ketika jumlah favorit kosong.</p>
+                            <img src="../images/aplikasi_mobile_laprak6/34.png" alt="Kode FavoritePage dengan Hapus Semua (bagian 1)" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/35.png" alt="Kode FavoritePage dengan Hapus Semua (bagian 2)" class="report-image">
+
+                            <h5>3. Output Latihan 2</h5>
+                            <img src="../images/aplikasi_mobile_laprak6/36.png" alt="Tombol Hapus Semua" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/37.png" alt="Dialog Konfirmasi Hapus" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/38.png" alt="Halaman Favorit Setelah Dihapus" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/39.png" alt="Halaman Home Setelah Favorit Dihapus" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/40.png" alt="Detail Aplikasi Mode Gelap" class="report-image">
+                            <img src="../images/aplikasi_mobile_laprak6/41.png" alt="Halaman Favorit Mode Gelap" class="report-image">
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>F. Kesimpulan</h3>
+                            <p>Berdasarkan praktikum dan analisis yang telah dilakukan, pemilihan cara pengelolaan state yang sesuai sangat memengaruhi performa serta struktur aplikasi. Penggunaan setState() terbukti paling cocok untuk ephemeral state atau state lokal yang hanya dibutuhkan pada satu halaman, seperti jumlah porsi pada halaman detail yang otomatis kembali ke nilai awal ketika halaman ditutup. Sebaliknya, paket Provider lebih tepat digunakan untuk app state atau state global, seperti daftar resep favorit dan pengaturan tema aplikasi. Dengan Provider, perubahan data pada satu bagian aplikasi dapat langsung memperbarui tampilan pada bagian lain secara otomatis.</p>
+                            <p>Praktikum ini juga menunjukkan bahwa pemahaman tentang struktur widget tree sangat penting dalam Flutter. Meletakkan ChangeNotifierProvider pada posisi paling atas, yaitu membungkus MaterialApp, merupakan syarat utama agar state global dapat diakses dari semua halaman baru yang dibuka melalui Navigator.push. Dengan penerapan arsitektur Provider yang benar, aplikasi ResepKu dapat berjalan secara modular, interaktif, responsif, dan tidak mengalami kendala dalam mengakses context.</p>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; gap: 20px; flex-wrap: wrap;">
+                                <a href="../report.html" class="btn" style="background-color: var(--primary-color); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-arrow-left"></i> Kembali ke Report
+                                </a>
+                                <a href="https://github.com/Alramadhanny/2411533016_KelasA_AppMob_ResepKu" target="_blank" class="btn" style="background-color: var(--primary-color); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;">
+                                    <i class="fab fa-github"></i> Lihat di Github
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
