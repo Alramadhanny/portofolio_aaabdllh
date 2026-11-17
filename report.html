@@ -265,6 +265,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 col-md-6 col-12 report-item" data-category="aplikasi-mobile">
+                        <div class="card h-100 report-card">
+                            <div class="card-body d-flex flex-column">
+                                <div class="report-card-icon"><i class="fab fa-flutter"></i></div>
+                                <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                                <h3>Praktikum 7: ListView, GridView, dan Asset Management</h3>
+                                <p>Membahas implementasi ListView.builder dan GridView.builder untuk menampilkan daftar resep, pemuatan gambar dari internet dengan RecipeImage, pengelolaan aset lokal (font kustom dan logo), serta fitur filter cuisine dan toggle tampilan list/grid pada aplikasi ResepKu.</p>
+                                <a href="laporan/flutter-listview-gridview.html" class="btn btn-detail-custom mt-auto">Baca Laporan</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -290,5 +302,50 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality for report items
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.report-filter-btn');
+            const reportItems = document.querySelectorAll('.report-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Filter report items
+                    reportItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filterValue === 'all') {
+                            item.style.display = 'block';
+                            // Add fade-in animation
+                            item.style.animation = 'fadeIn 0.3s ease-in';
+                        } else if (category === filterValue) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeIn 0.3s ease-in';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
