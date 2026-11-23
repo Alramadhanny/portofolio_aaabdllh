@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Praktikum 8: REST API & HTTP Request - Report | Abdullah Al Ramadhani</title>
+    <link rel="icon" href="../foto/keren.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    
+    .breadcrumb-nav {
+        background: var(--bg-light, #f4f1ea);
+        border-bottom: 1px solid rgba(26, 60, 94, 0.08);
+        padding: 14px 0;
+    }
+    .breadcrumb-nav .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+    .breadcrumb-nav a {
+        color: var(--primary-color, #1a3c5e);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .breadcrumb-nav a:hover {
+        color: var(--secondary-color, #c5a059);
+    }
+    .breadcrumb-nav .separator {
+        color: rgba(26, 60, 94, 0.4);
+    }
+    .breadcrumb-nav .current {
+        color: rgba(26, 60, 94, 0.75);
+        font-weight: 500;
+    }
+
+    /* Halaman detail mandiri: selalu tampilkan isi laporan */
+    #report-detail-section,
+    .report-detail {
+        display: block;
+    }
+    
+    /* Report image style */
+    .report-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        margin: 20px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><img src="../foto/logo.png" alt="Logo Saya"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portofolio.html">Portofolio</a></li>
+                    <li><a href="../report.html" class="active">Report</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="../report.html"><i class="fas fa-home"></i> Report</a>
+            <span class="separator">/</span>
+            <span class="current">Praktikum 8: REST API & HTTP Request</span>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section id="report-detail-section" aria-live="polite">
+            <div class="container">
+                <article id="laporan-flutter-rest-api" class="report-detail" data-category="aplikasi-mobile">
+                    <div class="report-detail-header">
+                        <span class="report-badge badge-aplikasi-mobile">Aplikasi Mobile</span>
+                        <h2>Praktikum 8: REST API & HTTP Request</h2>
+                    </div>
+                    <div class="report-detail-content report-document report-compact">
+                        <section class="report-document-block">
+                            <h3>A. Pendahuluan</h3>
+                            <p>Perkembangan aplikasi mobile mendorong kebutuhan akan pengelolaan data yang dinamis dan terintegrasi dengan server. Salah satu teknologi yang digunakan untuk memenuhi kebutuhan tersebut adalah REST API, yang memungkinkan aplikasi berkomunikasi dengan server melalui HTTP Request. Data yang diterima umumnya berbentuk JSON sehingga perlu diolah dan dikonversi ke dalam model data agar dapat digunakan oleh aplikasi. Pada Flutter, proses komunikasi dengan API dapat dilakukan menggunakan package http, sedangkan pengelolaan proses asinkron dapat memanfaatkan Future, async/await, dan FutureBuilder untuk menangani proses pemuatan data, menampilkan hasil, serta mengelola kondisi kesalahan.</p>
+                            <p>Pada praktikum Modul 8, konsep tersebut diterapkan pada aplikasi ResepKu yang sebelumnya menggunakan data resep dummy yang ditulis langsung di dalam kode. Aplikasi dikembangkan agar dapat mengambil data resep dari API https://dummyjson.com/recipes melalui metode GET, menambahkan resep menggunakan POST, serta melakukan pencarian, pembaruan, dan penghapusan data melalui endpoint yang tersedia. Selain itu, aplikasi dilengkapi dengan penanganan kondisi loading dan error agar proses pengambilan data dapat ditampilkan dengan baik kepada pengguna. Melalui praktikum ini, mahasiswa mempelajari penerapan HTTP Request, pengolahan respons JSON, serta integrasi data dari server ke dalam aplikasi mobile berbasis Flutter.</p>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>B. Tujuan</h3>
+                            <p>Tujuan dari praktikum ini adalah:</p>
+                            <ol class="report-objective-list">
+                                <li>Memahami struktur respons JSON dari REST API serta membuat factory fromJson untuk mengonversi data JSON menjadi model Recipe.</li>
+                                <li>Mampu melakukan HTTP Request menggunakan metode GET dengan package http melalui sebuah class service.</li>
+                                <li>Mampu menampilkan data API menggunakan FutureBuilder dengan menerapkan loading state, error state, tombol coba lagi, dan fitur pull-to-refresh.</li>
+                                <li>Mampu mengirimkan data resep baru ke server menggunakan metode POST melalui form serta menangani respons yang diterima.</li>
+                            </ol>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>C. Isi</h3>
+                            
+                            <h4>Praktikum</h4>
+                            
+                            <h5>1. Membuat Model Recipe</h5>
+                            <p><strong>File:</strong> models/recipe.dart</p>
+                            <p>Model Recipe digunakan untuk menampung data resep yang diterima dari API. Data JSON diubah menjadi objek Dart melalui fungsi fromJson().</p>
+                            <img src="../images/aplikasi_mobile_laprak8/1.png" alt="Model Recipe" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi tersebut mengambil nilai dari JSON dan memasukkannya ke dalam objek Recipe. Dengan demikian, data dari API dapat digunakan oleh halaman aplikasi dalam bentuk objek Dart.</p>
+
+                            <h5>2. Membuat RecipeService</h5>
+                            <p><strong>File:</strong> services/recipe_service.dart</p>
+                            <p>RecipeService dibuat untuk mengatur komunikasi antara aplikasi dan API. Pada bagian ini ditentukan alamat API, HTTP Client, dan batas waktu permintaan.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/2.png" alt="RecipeService Setup" class="report-image">
+                            <p>Selanjutnya, dibuat fungsi fetchRecipes() untuk mengambil daftar resep menggunakan metode GET.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/3.png" alt="fetchRecipes Function" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi tersebut mengirim permintaan GET, membaca respons JSON, kemudian mengubah setiap data resep menjadi objek Recipe.</p>
+
+                            <h5>3. Menambahkan Fungsi POST</h5>
+                            <p>Masih pada file services/recipe_service.dart, dibuat fungsi addRecipe() untuk mengirim data resep baru ke API.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/4.png" alt="addRecipe Function" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi ini mengirim nama resep, jenis masakan, dan waktu memasak dalam format JSON. Respons dari server kemudian diubah kembali menjadi objek Recipe.</p>
+
+                            <h5>4. Menyiapkan Halaman Utama</h5>
+                            <p><strong>File:</strong> pages/home_page.dart</p>
+                            <p>Pada halaman utama, data resep dimuat ketika halaman pertama kali dibuka. Future disimpan pada variabel _recipesFuture.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/5.png" alt="HomePage State" class="report-image">
+                            <p><strong>Penjelasan:</strong> Penyimpanan Future dilakukan di initState() agar permintaan API tidak dibuat berulang kali setiap kali fungsi build() dijalankan.</p>
+
+                            <h5>5. Menampilkan Data dengan FutureBuilder</h5>
+                            <p>Data dari API ditampilkan menggunakan FutureBuilder. Komponen ini menangani kondisi ketika data sedang dimuat, terjadi kesalahan, atau data berhasil diterima.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/6.png" alt="FutureBuilder Implementation" class="report-image">
+                            <p><strong>Penjelasan:</strong> Jika data sedang dimuat, aplikasi menampilkan indikator loading. Jika terjadi kesalahan, aplikasi menampilkan pesan error. Jika data tersedia, daftar resep ditampilkan dalam bentuk list atau grid.</p>
+
+                            <h5>6. Membuat Fitur Refresh</h5>
+                            <p>Fungsi _reload() digunakan untuk membuat permintaan GET baru, sedangkan _refresh() digunakan ketika pengguna menarik daftar resep ke bawah.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/7.png" alt="Refresh Functions" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fitur ini memungkinkan pengguna memuat ulang data tanpa harus menutup dan membuka aplikasi kembali.</p>
+
+                            <h5>7. Membuat Form Tambah Resep</h5>
+                            <p><strong>File:</strong> pages/add_recipe_page.dart</p>
+                            <p>Halaman tambah resep menyediakan formulir untuk memasukkan nama resep, jenis masakan, dan waktu memasak. Sebelum data dikirim, formulir diperiksa menggunakan fungsi validasi.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/8.png" alt="Add Recipe Form" class="report-image">
+                            <p><strong>Penjelasan:</strong> Jika data valid, aplikasi memanggil fungsi addRecipe() untuk mengirim data menggunakan metode POST. Setelah berhasil, halaman mengembalikan data resep yang diterima dari server.</p>
+
+                            <h4>Checkpoint 1</h4>
+                            <p><strong>Indikator loading:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/9.png" alt="Loading Indicator" class="report-image">
+                            
+                            <p><strong>Home dengan resep dari server (perlihatkan resep yang tidak ada di 6 resep dummy):</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/10.png" alt="Data dari Server" class="report-image">
+                            
+                            <p><strong>Halaman Detail yang menampilkan bagian Langkah:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/11.png" alt="Detail Page" class="report-image">
+
+                            <h4>Checkpoint 2</h4>
+                            <p><strong>ErrorView saat mode pesawat aktif:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/12.png" alt="Error View" class="report-image">
+                            
+                            <p><strong>Pull-to-refresh yang sedang berjalan:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/13.png" alt="Pull to Refresh" class="report-image">
+
+                            <h4>Checkpoint 3</h4>
+                            <p><strong>Tekan tombol +, lalu tekan Simpan dengan form kosong. Pesan "Wajib diisi" harus muncul dan tidak ada request yang dikirim:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/14.png" alt="Form Validation" class="report-image">
+                            
+                            <p><strong>Isi nama Rendang, cuisine Indonesian, dan waktu 180, lalu tekan Simpan. Form tertutup dan SnackBar menampilkan id yang diberikan server:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/15.png" alt="Form Submit Success" class="report-image">
+                            
+                            <p><strong>Tarik daftar untuk refresh. Rendang tidak muncul, karena dummyjson hanya menyimulasikan penyimpanan:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/16.png" alt="After Refresh" class="report-image">
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>D. Pengujian</h3>
+                            
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Skenario</th>
+                                        <th>Hasil yang diharapkan</th>
+                                        <th>Sesuai?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Buka aplikasi</td>
+                                        <td>Indikator loading, lalu 50 resep dari server</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Tandai dua resep sebagai favorit, lalu tarik untuk refresh</td>
+                                        <td>Ikon hati kedua resep tetap merah dan badge tetap 2</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Tekan tombol grid, lalu kembali ke list</td>
+                                        <td>Tidak ada indikator loading baru</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Buka detail salah satu resep</td>
+                                        <td>Foto, porsi, bahan, dan langkah memasak tampil</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Mode pesawat, lalu hot restart</td>
+                                        <td>ErrorView dengan tombol "Coba lagi"</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Matikan mode pesawat, tekan "Coba lagi"</td>
+                                        <td>Daftar resep tampil kembali</td>
+                                        <td>✓</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Kirim resep baru melalui tombol +</td>
+                                        <td>SnackBar berisi id dari server</td>
+                                        <td>✓</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <h4>Pertanyaan Analisis</h4>
+                            
+                            <div class="report-qa-block">
+                                <p><strong>1. Pada skenario 2, setiap refresh membuat objek Recipe yang baru dari JSON. Mengapa status favorit tetap benar? Hubungkan dengan cara FavoriteProvider membandingkan resep (Modul 6).</strong></p>
+                                <p><strong>Jawab:</strong></p>
+                                <p>Status favorit tetap bertahan setelah refresh karena FavoriteProvider tidak menyimpan keseluruhan referensi objek Recipe di memori, melainkan hanya menyimpan daftar ID resep (id) yang unik untuk setiap item. Saat proses refresh menghasilkan instance objek Recipe baru hasil parsing JSON, nilai id setiap resep dari server tetap sama sehingga pengecekan isFavorite(recipe) berdasarkan ID tetap mengembalikan nilai true dan mempertahankan warna merah ikon hati beserta jumlah pada badge.</p>
+                            </div>
+
+                            <div class="report-qa-block">
+                                <p><strong>2. Pada skenario 3, mengapa menekan tombol grid tidak memunculkan indikator loading? Apa yang akan terjadi jika future ditulis langsung di dalam build()?</strong></p>
+                                <p><strong>Jawab:</strong></p>
+                                <p>Menekan tombol grid tidak memunculkan indikator loading karena tombol pergantian tampilan list dan grid hanya mengubah nilai variabel boolean _isGrid di dalam setState, sedangkan objek _recipesFuture diinisialisasi satu kali di dalam method initState() sehingga instance Future yang dipakai FutureBuilder tidak berubah saat layar di-render ulang. Apabila pemanggilan fetchRecipes() ditulis langsung di dalam method build(), setiap perubahan state seperti menekan tombol grid akan memicu request HTTP baru ke server dan menampilkan indikator loading secara berulang kali.</p>
+                            </div>
+
+                            <div class="report-qa-block">
+                                <p><strong>3. HomePage tidak memanggil http.get secara langsung, melainkan melalui RecipeService. Sebutkan dua keuntungan cara ini.</strong></p>
+                                <p><strong>Jawab:</strong></p>
+                                <p>Memisahkan logika komunikasi jaringan ke dalam class RecipeService membuat kode antarmuka (UI) di HomePage tetap bersih dan terpisah dari detail teknis seperti URL endpoint, pengaturan timeout, maupun proses decoding JSON. Selain itu, arsitektur ini memudahkan pemeliharaan serta pengujian unit (unit testing) karena http.Client dapat diganti dengan MockClient tanpa harus mengubah kode pada lapisan tampilan.</p>
+                            </div>
+
+                            <div class="report-qa-block">
+                                <p><strong>4. Setelah POST berhasil, server memberi id baru, tetapi resep tidak muncul saat daftar dimuat ulang. Jelaskan penyebabnya, dan bagaimana aplikasi dengan server sungguhan biasanya menampilkan data yang baru ditambahkan.</strong></p>
+                                <p><strong>Jawab:</strong></p>
+                                <p>Resep baru yang dikirimkan melalui endpoint /recipes/add tidak muncul saat daftar dimuat ulang karena dummyjson.com merupakan REST API publik untuk latihan yang hanya menyimulasikan operasi penulisan data tanpa benar-benar menyimpannya ke dalam basis data permanen. Pada aplikasi dengan server produksi yang sungguhan, data yang baru ditambahkan umumnya ditampilkan dengan cara memanggil ulang endpoint GET setelah navigasi form ditutup atau menyisipkan langsung objek resep hasil respons POST ke dalam daftar state lokal di layar.</p>
+                            </div>
+
+                            <div class="report-qa-block">
+                                <p><strong>5. Di AddRecipePage terdapat if (!mounted) return; setelah await. Jelaskan skenario yang dicegah oleh baris tersebut.</strong></p>
+                                <p><strong>Jawab:</strong></p>
+                                <p>Baris if (!mounted) return; berfungsi mencegah terjadinya runtime error akibat pemanggilan Navigator.pop atau ScaffoldMessenger menggunakan BuildContext milik widget yang sudah tidak aktif di dalam widget tree. Skenario ini terjadi ketika pengguna menekan tombol kembali untuk menutup halaman AddRecipePage sebelum proses request HTTP addRecipe yang ditunggu oleh await selesai merespons dari server.</p>
+                            </div>
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>E. Latihan</h3>
+                            
+                            <h4>Latihan 1: Fitur Search</h4>
+                            
+                            <h5>1. Menambahkan Fungsi Search pada RecipeService</h5>
+                            <p><strong>File:</strong> services/recipe_service.dart</p>
+                            <p>Fungsi searchRecipes() digunakan untuk mencari resep berdasarkan kata kunci yang dimasukkan pengguna.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/17.png" alt="Search Function" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi tersebut mengirim permintaan GET ke endpoint pencarian dengan parameter q. Hasil pencarian kemudian diubah menjadi daftar objek Recipe.</p>
+
+                            <h5>2. Membuat Halaman Search</h5>
+                            <p><strong>File:</strong> pages/search_page.dart</p>
+                            <p>Halaman pencarian menggunakan TextEditingController untuk membaca kata kunci yang dimasukkan pengguna. Ketika pengguna menekan Enter, fungsi _search() dijalankan.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/18.png" alt="Search Page Implementation" class="report-image">
+                            <p><strong>Penjelasan:</strong> Kata kunci dibersihkan menggunakan trim(). Jika tidak kosong, aplikasi memanggil fungsi searchRecipes() dan menyimpan hasilnya dalam _searchFuture.</p>
+
+                            <h5>3. Menampilkan Hasil Pencarian</h5>
+                            <p>Hasil pencarian ditampilkan menggunakan FutureBuilder. Aplikasi menampilkan indikator loading ketika permintaan berlangsung, pesan error jika terjadi kegagalan, dan daftar resep jika data berhasil diterima.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/19.png" alt="Search Results Display" class="report-image">
+                            <p><strong>Penjelasan:</strong> Dengan fitur ini, pengguna dapat mencari resep berdasarkan kata kunci dan melihat hasilnya secara langsung pada halaman pencarian.</p>
+
+                            <h5>4. Menghubungkan Halaman Search dengan HomePage</h5>
+                            <p><strong>File:</strong> pages/home_page.dart</p>
+                            <p>Pada halaman utama ditambahkan tombol pencarian yang mengarahkan pengguna ke SearchPage.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/20.png" alt="Search Button in HomePage" class="report-image">
+
+                            <h5>Hasil Latihan 1</h5>
+                            <p><strong>Hasil pencarian muncul (misalnya mencari kata kunci pasta):</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/21.png" alt="Search Result - Pasta" class="report-image">
+                            
+                            <p><strong>Hasil pencarian kosong (misalnya mencari kata kunci acak seperti xyz123):</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/22.png" alt="Empty Search Result" class="report-image">
+
+                            <h4>Latihan 2: Fitur Update dan Delete</h4>
+                            
+                            <h5>1. Menambahkan Fungsi Update pada RecipeService</h5>
+                            <p><strong>File:</strong> services/recipe_service.dart</p>
+                            <p>Fungsi updateRecipe() digunakan untuk mengubah nama resep berdasarkan ID resep.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/23.png" alt="Update Function" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi ini mengirim permintaan PUT ke endpoint resep berdasarkan ID. Nama baru dikirim dalam format JSON, kemudian respons server diubah menjadi objek Recipe.</p>
+
+                            <h5>2. Menambahkan Fungsi Delete pada RecipeService</h5>
+                            <p>Masih pada file services/recipe_service.dart, fungsi deleteRecipe() digunakan untuk menghapus resep berdasarkan ID.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/24.png" alt="Delete Function" class="report-image">
+                            <p><strong>Penjelasan:</strong> Fungsi tersebut mengirim permintaan DELETE. Setelah menerima respons, aplikasi membaca nilai isDeleted untuk mengetahui apakah server menyatakan proses penghapusan berhasil.</p>
+
+                            <h5>3. Membuat Dialog Ubah Nama Resep</h5>
+                            <p><strong>File:</strong> pages/detail_page.dart</p>
+                            <p>Pada halaman detail resep ditambahkan fungsi _showEditDialog(). Fungsi ini menampilkan dialog agar pengguna dapat memasukkan nama resep yang baru.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/25.png" alt="Edit Dialog" class="report-image">
+                            <p><strong>Penjelasan:</strong> Setelah pengguna menekan tombol Simpan, aplikasi memanggil fungsi updateRecipe(). Jika permintaan berhasil, aplikasi menampilkan pesan melalui SnackBar. Jika terjadi kesalahan, aplikasi menampilkan pesan kegagalan.</p>
+
+                            <h5>4. Membuat Dialog Konfirmasi Hapus</h5>
+                            <p>Masih pada file pages/detail_page.dart, fungsi _showDeleteDialog() digunakan untuk meminta konfirmasi sebelum menghapus resep.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/26.png" alt="Delete Dialog" class="report-image">
+                            <p><strong>Penjelasan:</strong> Jika server memberikan nilai isDeleted bernilai benar, aplikasi menampilkan pemberitahuan bahwa resep berhasil dihapus dan kembali ke halaman sebelumnya.</p>
+
+                            <h5>5. Menambahkan Menu Ubah dan Hapus</h5>
+                            <p>Pada AppBar halaman detail, ditambahkan PopupMenuButton yang menyediakan pilihan Ubah nama dan Hapus.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/27.png" alt="Popup Menu" class="report-image">
+
+                            <h5>Hasil Latihan 2</h5>
+                            <p><strong>Dialog Ubah Nama Resep terbuka:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/28.png" alt="Edit Dialog Opened" class="report-image">
+                            
+                            <p><strong>SnackBar nama baru setelah tombol Simpan ditekan:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/29.png" alt="Edit Success SnackBar" class="report-image">
+                            
+                            <p><strong>Dialog konfirmasi Hapus Resep terbuka, serta SnackBar konfirmasi penghapusan setelah kembali ke halaman Home:</strong></p>
+                            <img src="../images/aplikasi_mobile_laprak8/30.png" alt="Delete Confirmation" class="report-image">
+
+                            <h4>Latihan 3: Unit Testing</h4>
+                            
+                            <h5>1. Membuat File test/recipe_service_test.dart</h5>
+                            <p>Buat file baru di dalam folder test/ bernama recipe_service_test.dart untuk melakukan pengujian unit pada RecipeService menggunakan MockClient.</p>
+                            <img src="../images/aplikasi_mobile_laprak8/31.png" alt="Recipe Service Test File" class="report-image">
+                            
+                            <h5>2. Menjalankan Pengujian</h5>
+                            <p>Buka terminal di VS Code pada direktori root project resepku, lalu jalankan perintah berikut:</p>
+                            <pre><code>flutter test test/recipe_service_test.dart</code></pre>
+                            <img src="../images/aplikasi_mobile_laprak8/32.png" alt="Unit Test Results" class="report-image" style="max-width: 800px;">
+                        </section>
+
+                        <section class="report-document-block">
+                            <h3>F. Kesimpulan</h3>
+                            <p>Pada praktikum ini, aplikasi ResepKu berhasil diintegrasikan dengan REST API dari dummyjson.com untuk menggantikan data statis menjadi data dinamis langsung dari server. Proses pengambilan data dilakukan melalui pemisahan lapisan komunikasi jaringan ke dalam class RecipeService menggunakan package http serta konversi struktur JSON ke objek Dart melalui factory constructor Recipe.fromJson. Seluruh siklus operasi CRUD mulai dari menampilkan daftar resep (GET), pencarian kata kunci, hingga penambahan (POST), pembaruan (PUT), dan penghapusan data (DELETE) dapat berjalan bersama widget FutureBuilder untuk menangani tampilan indikator loading, pesan error beserta tombol coba lagi, maupun fitur pull-to-refresh.</p>
+                            <p>Selain integrasi jaringan, praktikum ini juga menunjukkan pentingnya menjaga stabilitas tampilan dan konsistensi data pada pemrograman asinkron di Flutter. Penggunaan inisialisasi Future di dalam initState(), validasi input pada formulir pengiriman data, serta pengecekan properti mounted setelah proses await terbukti mencegah pemanggilan request berulang dan menghindari error ketika halaman ditutup sebelum respons server tiba. Di sisi lain, pengujian fungsional maupun unit test menggunakan MockClient memastikan bahwa status favorit berbasis ID tetap terjaga setelah pembaruan data dan logika layanan API dapat diuji secara terpisah tanpa bergantung pada koneksi internet.</p>
+                            
+                            <div class="report-navigation-buttons" style="display: flex; justify-content: space-between; gap: 20px; margin-top: 40px; flex-wrap: wrap;">
+                                <a href="../report.html" class="btn btn-lg" style="background-color: var(--primary-color); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Kembali
+                                </a>
+                                <a href="https://github.com/Alramadhanny/2411533016_KelasA_AppMob_ResepKu/tree/Praktikum8" target="_blank" class="btn btn-lg" style="background-color: var(--primary-color); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+                                    <i class="fab fa-github"></i>
+                                    Lihat di GitHub
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <span class="copyright-year">© 2025</span>
+            </div>
+            <div class="footer-center">
+                <p>Abdullah Al Ramadhani</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/a.a.ramadhanny/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/T7sXDf6xJQ" target="_blank"><i class="fab fa-line"></i></a>
+                <a href="https://www.linkedin.com/in/abdullah-al-ramadhani-05066a322/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Alramadhanny" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
